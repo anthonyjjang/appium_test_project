@@ -1,0 +1,14 @@
+# Appium Test Framework Dependencies
+Appium-Python-Client>=3.1.0
+selenium>=4.15.0
+pandas>=2.1.0
+python-dotenv>=1.0.0
+
+# Optional dependencies for enhanced testing
+openpyxl>=3.1.0  # For Excel file support
+pytest>=7.4.0    # Alternative test runner
+pytest-xdist>=3.3.0  # Parallel test execution with pytest
+requests>=2.28.0  # For HTTP requests (environment verification)
+psutil>=5.9.0  # For system monitoring
+pillow>=9.0.0  # For image processing (screenshots)
+colorama>=0.4.0  # For colored terminal output

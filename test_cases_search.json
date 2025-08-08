@@ -1,0 +1,19 @@
+[
+  {
+    "test_id": "TEST_GNB2000",
+    "screen_id": "GNB2000",
+    "url": "GNB2000",
+    "steps": [],
+    "assert_text": "메뉴"
+  },
+  {
+    "test_id": "TEST_CUS1000",
+    "screen_id": "CUS1000",
+    "url": "CUS1000",
+    "steps": [
+      { "action": "input", "selector_id": "input_search", "value": "1" },
+      { "action": "click", "selector_id": "btn_search"}
+    ],
+    "assert_text": "고객검색"
+  }
+]

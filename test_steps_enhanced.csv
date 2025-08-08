@@ -1,0 +1,67 @@
+test_id,step_order,action,selector_type,selector_value,input_value,expected_value,wait_time,description,validation_type,retry_count
+# 로그인 테스트 - 완전한 검증 로직
+TC001,1,wait_for_element,CSS_SELECTOR,.log_id input,,visible,10,로그인 페이지 로딩 대기,element_visible,3
+TC001,2,clear_and_input,CSS_SELECTOR,.log_id input,c89109,,2,아이디 입력,input_validation,2
+TC001,3,verify_input_value,CSS_SELECTOR,.log_id input,,c89109,1,아이디 입력 확인,text_match,1
+TC001,4,clear_and_input,XPATH,//input[@type='password'],mcnc1234!!,,2,비밀번호 입력,input_validation,2
+TC001,5,click,CSS_SELECTOR,.btn01,,enabled,1,로그인 버튼 클릭,element_clickable,3
+TC001,6,wait_for_page_load,XPATH,//div[@class='main_content'],,visible,15,메인 화면 로딩 대기,page_load,5
+TC001,7,verify_url_contains,,,CUS1000,CUS1000,2,메인 페이지 URL 확인,url_validation,2
+TC001,8,verify_element_text,XPATH,//h1[@class='page_title'],,홈,2,페이지 제목 확인,text_match,2
+TC001,9,take_screenshot,,,login_success,,1,로그인 성공 스크린샷,screenshot,1
+
+# 고객 검색 테스트 - 상세 검증
+TC002,1,wait_for_element,XPATH,//input[@placeholder='검색어 입력'],,visible,10,검색 입력창 로딩 대기,element_visible,3
+TC002,2,clear_and_input,XPATH,//input[@placeholder='검색어 입력'],12,,2,검색어 입력,input_validation,2
+TC002,3,verify_input_value,XPATH,//input[@placeholder='검색어 입력'],,12,1,검색어 입력 확인,text_match,1
+TC002,4,click,CSS_SELECTOR,.active .btn_search,,enabled,1,검색 버튼 클릭,element_clickable,3
+TC002,5,wait_for_loading,CSS_SELECTOR,.loading_spinner,,invisible,20,검색 결과 로딩 대기,loading_complete,5
+TC002,6,verify_element_exists,CSS_SELECTOR,.grid_content,,exists,3,검색 결과 그리드 존재 확인,element_exists,3
+TC002,7,verify_result_count,CSS_SELECTOR,.grid_content .grid_row,,>0,2,검색 결과 개수 확인,count_validation,2
+TC002,8,verify_search_highlight,CSS_SELECTOR,.grid_content .highlight,,12,2,검색어 하이라이트 확인,text_contains,2
+TC002,9,take_screenshot,,,search_results,,1,검색 결과 스크린샷,screenshot,1
+
+# 고객 상세 정보 테스트
+TC003,1,wait_for_element,CSS_SELECTOR,.customer_detail,,visible,10,고객 상세 페이지 로딩 대기,element_visible,3
+TC003,2,verify_customer_code,CSS_SELECTOR,.cust_code,,AA2778,2,고객 코드 확인,text_match,2
+TC003,3,verify_customer_name,CSS_SELECTOR,.cust_name,,not_empty,2,고객명 존재 확인,text_not_empty,2
+TC003,4,verify_contact_info,CSS_SELECTOR,.contact_phone,,phone_format,2,연락처 형식 확인,regex_match,2
+TC003,5,scroll_to_bottom,,,,,3,페이지 하단으로 스크롤,scroll_action,1
+TC003,6,verify_tabs_exist,CSS_SELECTOR,.tab_menu .tab,,>0,2,탭 메뉴 존재 확인,count_validation,2
+TC003,7,click_each_tab,CSS_SELECTOR,.tab_menu .tab,,enabled,2,각 탭 클릭 테스트,tab_navigation,3
+TC003,8,take_screenshot,,,customer_detail,,1,고객 상세 정보 스크린샷,screenshot,1
+
+# 루트플랜 조회 테스트
+TC004,1,wait_for_element,CSS_SELECTOR,.route_plan_calendar,,visible,15,루트플랜 캘린더 로딩 대기,element_visible,5
+TC004,2,verify_current_month,CSS_SELECTOR,.calendar_header .month,,current_month,2,현재 월 표시 확인,date_validation,2
+TC004,3,click,CSS_SELECTOR,.calendar_nav .prev_month,,enabled,2,이전 달 버튼 클릭,element_clickable,3
+TC004,4,wait_for_calendar_update,CSS_SELECTOR,.calendar_loading,,invisible,10,캘린더 업데이트 대기,loading_complete,3
+TC004,5,click,CSS_SELECTOR,.calendar_nav .next_month,,enabled,2,다음 달 버튼 클릭,element_clickable,3
+TC004,6,verify_plan_items,CSS_SELECTOR,.plan_item,,>0,3,플랜 항목 존재 확인,count_validation,3
+TC004,7,click,CSS_SELECTOR,.plan_item:first-child,,enabled,2,첫 번째 플랜 클릭,element_clickable,3
+TC004,8,verify_plan_detail,CSS_SELECTOR,.plan_detail_modal,,visible,5,플랜 상세 모달 확인,element_visible,3
+TC004,9,take_screenshot,,,route_plan,,1,루트플랜 스크린샷,screenshot,1
+
+# 설치/회수 관리 테스트  
+TC005,1,wait_for_element,CSS_SELECTOR,.installation_list,,visible,10,설치 목록 로딩 대기,element_visible,3
+TC005,2,verify_list_headers,CSS_SELECTOR,.list_header th,,expected_headers,2,목록 헤더 확인,header_validation,2
+TC005,3,apply_date_filter,CSS_SELECTOR,.date_picker,,today,3,날짜 필터 적용,date_filter,3
+TC005,4,verify_filtered_results,CSS_SELECTOR,.installation_item,,date_match,3,필터 결과 확인,date_range_validation,3
+TC005,5,click,CSS_SELECTOR,.installation_item:first-child .detail_btn,,enabled,2,상세 버튼 클릭,element_clickable,3
+TC005,6,verify_installation_detail,CSS_SELECTOR,.installation_detail,,complete_info,5,설치 상세 정보 확인,detail_validation,3
+TC005,7,update_status,CSS_SELECTOR,.status_select,완료,selected,3,상태 업데이트,select_validation,3
+TC005,8,save_changes,CSS_SELECTOR,.save_btn,,enabled,2,변경사항 저장,save_action,3
+TC005,9,verify_success_message,CSS_SELECTOR,.success_message,,저장되었습니다,3,저장 성공 메시지 확인,text_match,2
+TC005,10,take_screenshot,,,installation_mgmt,,1,설치관리 스크린샷,screenshot,1
+
+# 수금 등록 테스트
+TC006,1,wait_for_element,CSS_SELECTOR,.collection_form,,visible,10,수금 등록 폼 로딩 대기,element_visible,3
+TC006,2,select_customer,CSS_SELECTOR,.customer_select,AA2778,selected,3,고객 선택,select_validation,3
+TC006,3,input_amount,CSS_SELECTOR,.amount_input,50000,numeric,2,수금액 입력,numeric_validation,2
+TC006,4,select_payment_method,CSS_SELECTOR,.payment_method,현금,selected,2,결제 방법 선택,select_validation,2
+TC006,5,input_collection_date,CSS_SELECTOR,.collection_date,today,date_format,2,수금일 입력,date_validation,2
+TC006,6,input_remarks,CSS_SELECTOR,.remarks_input,테스트 수금,,2,비고 입력,input_validation,1
+TC006,7,verify_form_validation,CSS_SELECTOR,.form_validation,,valid,2,폼 유효성 검증,form_validation,2
+TC006,8,click,CSS_SELECTOR,.register_btn,,enabled,2,등록 버튼 클릭,element_clickable,3
+TC006,9,verify_registration_success,CSS_SELECTOR,.success_modal,,등록되었습니다,5,등록 성공 확인,text_match,3
+TC006,10,take_screenshot,,,collection_register,,1,수금등록 스크린샷,screenshot,1

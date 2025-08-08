@@ -1,0 +1,229 @@
+[
+  {
+    "test_id": "TEST_GNB2000",
+    "screen_id": "GNB2000",
+    "url": "GNB2000",
+    "steps": [],
+    "assert_text": "메뉴"
+  },
+  {
+    "test_id": "TEST_HOM1000",
+    "screen_id": "HOM1000",
+    "url": "HOM1000",
+    "steps": [],
+    "assert_text": "홈"
+  },
+  {
+    "test_id": "TEST_CUS1000",
+    "screen_id": "CUS1000",
+    "url": "CUS1000",
+    "steps": [
+      { "action": "input", "selector_id": "searchTextInput", "value": "1" },
+      { "action": "click", "selector_id": "btn_search"}
+    ],
+    "assert_text": "고객 검색"
+  },
+  {
+    "test_id": "TEST_CUS1110",
+    "screen_id": "CUS1110",
+    "url": "CUS1110?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 기본정보"
+  },
+  {
+    "test_id": "TEST_CUS1120",
+    "screen_id": "CUS1120",
+    "url": "CUS1120?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 계약정보"
+  },
+  {
+    "test_id": "TEST_CUS1130",
+    "screen_id": "CUS1130",
+    "url": "CUS1130?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 방제제정보"
+  },
+  {
+    "test_id": "TEST_CUS1140",
+    "screen_id": "CUS1140",
+    "url": "CUS1140?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 매출/수금정보"
+  },
+  {
+    "test_id": "TEST_CUS1150",
+    "screen_id": "CUS1150",
+    "url": "CUS1150?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 서비스내역"
+  },
+  {
+    "test_id": "TEST_CUS1160",
+    "screen_id": "CUS1160",
+    "url": "CUS1160?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 접촉이력"
+  },
+  {
+    "test_id": "TEST_CUS1170",
+    "screen_id": "CUS1170",
+    "url": "CUS1170?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 작업일정"
+  },
+  {
+    "test_id": "TEST_CUS1180",
+    "screen_id": "CUS1180",
+    "url": "CUS1180?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 미작업"
+  },
+  {
+    "test_id": "TEST_CUS1121",
+    "screen_id": "CUS1121",
+    "url": "CUS1121",
+    "steps": [],
+    "assert_text": "고객 계약이력"
+  },
+  {
+    "test_id": "TEST_RTP1000",
+    "screen_id": "RTP1000",
+    "url": "RTP1000",
+    "steps": [],
+    "assert_text": "루트트플랜 조회(월)"
+  },
+  {
+    "test_id": "TEST_RTP1200",
+    "screen_id": "RTP1200",
+    "url": "RTP1200",
+    "steps": [],
+    "assert_text": "플랜 조회(주)"
+  },
+  {
+    "test_id": "TEST_RTP2000",
+    "screen_id": "RTP2000",
+    "url": "RTP2000",
+    "steps": [],
+    "assert_text": "루트플랜 배정"
+  },
+  {
+    "test_id": "TEST_RTP2200",
+    "screen_id": "RTP2200",
+    "url": "RTP2200",
+    "steps": [],
+    "assert_text": "루트플랜 변경"
+  },
+  {
+    "test_id": "TEST_SEG1000",
+    "screen_id": "SEG1000",
+    "url": "SEG1000?CustCode=AA2778",
+    "steps": [],
+    "assert_text": "고객 구획화 목록"
+  },
+  {
+    "test_id": "TEST_IEM2000",
+    "screen_id": "IEM2000",
+    "url": "IEM2000",
+    "steps": [],
+    "assert_text": "설치/회수 관리"
+  },
+  {
+    "test_id": "TEST_IEM3000",
+    "screen_id": "IEM3000",
+    "url": "IEM3000",
+    "steps": [],
+    "assert_text": "설치/회수 이력조회"
+  },
+  {
+    "test_id": "TEST_IEM5010",
+    "screen_id": "IEM5010",
+    "url": "IEM5010",
+    "steps": [],
+    "assert_text": "교체품 조회"
+  },
+  {
+    "test_id": "TEST_IEM4000",
+    "screen_id": "IEM4000",
+    "url": "IEM4000",
+    "steps": [],
+    "assert_text": "교체품 이력조회"
+  },
+  {
+    "test_id": "TEST_COL1000",
+    "screen_id": "COL1000",
+    "url": "COL1000",
+    "steps": [],
+    "assert_text": "미수내역 관리"
+  },
+  {
+    "test_id": "TEST_COL1100",
+    "screen_id": "COL1100",
+    "url": "COL1100",
+    "steps": [],
+    "assert_text": "수금 등록"
+  },
+  {
+    "test_id": "TEST_COL2000",
+    "screen_id": "COL2000",
+    "url": "COL2000",
+    "steps": [],
+    "assert_text": "미수통화 관리"
+  },
+  {
+    "test_id": "TEST_COL2210",
+    "screen_id": "COL2210",
+    "url": "COL2210",
+    "steps": [],
+    "assert_text": "미수통화 등록"
+  },
+  {
+    "test_id": "TEST_COL2300",
+    "screen_id": "COL2300",
+    "url": "COL2300",
+    "steps": [],
+    "assert_text": "고객 결제 이력"
+  },
+  {
+    "test_id": "TEST_SAL1000",
+    "screen_id": "SAL1000",
+    "url": "SAL1000",
+    "steps": [],
+    "assert_text": "영업일지 내역"
+  },
+  {
+    "test_id": "TEST_VOC2000",
+    "screen_id": "VOC2000",
+    "url": "VOC2000",
+    "steps": [],
+    "assert_text": "고객요청 등록"
+  },
+  {
+    "test_id": "TEST_ATT1100",
+    "screen_id": "ATT1100",
+    "url": "ATT1100",
+    "steps": [],
+    "assert_text": "근태신청"
+  },
+  {
+    "test_id": "TEST_ATT1000",
+    "screen_id": "ATT1000",
+    "url": "ATT1000",
+    "steps": [],
+    "assert_text": "근태신청 내역"
+  },
+  {
+    "test_id": "TEST_ATT2000",
+    "screen_id": "ATT2000",
+    "url": "ATT2000",
+    "steps": [],
+    "assert_text": "근태신청 결재내역"
+  },
+  {
+    "test_id": "TEST_ATT3000",
+    "screen_id": "ATT3000",
+    "url": "ATT3000",
+    "steps": [],
+    "assert_text": "출근/퇴근 이력조회"
+  }
+]

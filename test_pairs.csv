@@ -1,0 +1,4 @@
+pair_id,device_udid,user_ids,languages,description
+PAIR001,RFCX715QHAL,c89109;c89110,vi;en,베트남 디바이스-베트남/중국 사용자-베트남어/영어
+PAIR002,RFCW60JY8SF,c89110;c89111,zh;ko,중국 디바이스-중국/한국 사용자-중국어/한국어
+PAIR003,R3CW509J2RE,c89109;c89111,ko;en,한국 디바이스-베트남/한국 사용자-한국어/영어 

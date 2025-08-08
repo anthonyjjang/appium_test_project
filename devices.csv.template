@@ -1,0 +1,7 @@
+device_id,udid,platform_name,platform_version,app_package,app_activity,webview_name
+DEVICE1,RFCX715QHAL,Android,13,com.cesco.oversea.srs.viet,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.viet
+DEVICE2,RFCW60JY8SF,Android,13,com.cesco.oversea.srs.cn,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.cn
+DEVICE3,R3CW509J2RE,Android,13,com.cesco.oversea.srs.dev,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.dev 
+DEVICE1,RFCW60JY95K,Android,13,com.cesco.oversea.srs.viet,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.viet
+DEVICE2,RFCW60JY8SF,Android,13,com.cesco.oversea.srs.cn,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.cn
+DEVICE3,R3CW509J2RE,Android,13,com.cesco.oversea.srs.dev,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.dev 

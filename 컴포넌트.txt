@@ -1,0 +1,3 @@
+css=.menu_group:nth-child(1) li:nth-child(1) span
+css=.menu_group:nth-child(1) li:nth-child(1) span
+css=.menu_group:nth-child(1) li:nth-child(1) span

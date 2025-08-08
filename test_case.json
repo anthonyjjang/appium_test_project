@@ -1,0 +1,13 @@
+[
+  {
+    "test_id": "GNB2000",
+    "screen_id": "GNB2000",
+    "url": "http://localhost/LOG1000",
+    "steps": [
+      { "action": "input", "selector": "//input[@name='username']", "value": "testuser" },
+      { "action": "input", "selector": "//input[@name='password']", "value": "1234" },
+      { "action": "click", "selector": "//button[text()='로그인']" }
+    ],
+    "assert_text": "Welcome"
+  }
+]

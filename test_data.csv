@@ -1,0 +1,69 @@
+test_id,data_type,key,value,description,locale
+# 로그인 테스트 데이터
+TC001,credential,user_id,c89109,기본 테스트 계정,all
+TC001,credential,user_pw,mcnc1234!!,기본 테스트 패스워드,all
+TC001,credential,admin_id,admin001,관리자 계정,all
+TC001,credential,admin_pw,admin1234!!,관리자 패스워드,all
+TC001,validation,success_url,CUS1000,로그인 성공 시 URL,all
+TC001,validation,page_title,홈,로그인 후 페이지 제목,ko
+TC001,validation,page_title,Home,로그인 후 페이지 제목,en
+TC001,validation,page_title,主页,로그인 후 페이지 제목,zh
+TC001,validation,page_title,Trang chủ,로그인 후 페이지 제목,vi
+
+# 고객 검색 테스트 데이터  
+TC002,search,customer_code,AA2778,기본 고객 코드,all
+TC002,search,customer_name,홍길동,테스트 고객명,ko
+TC002,search,customer_name,John Smith,테스트 고객명,en
+TC002,search,customer_name,张三,테스트 고객명,zh
+TC002,search,customer_name,Nguyen Van A,테스트 고객명,vi
+TC002,search,partial_search,AA,부분 검색어,all
+TC002,search,invalid_search,ZZZZ999,검색 결과 없는 키워드,all
+TC002,validation,min_results,1,최소 검색 결과 개수,all
+TC002,validation,max_results,100,최대 검색 결과 개수,all
+
+# 고객 상세 정보 테스트 데이터
+TC003,customer,code,AA2778,테스트 고객 코드,all
+TC003,customer,name,홍길동 주식회사,테스트 고객명,ko
+TC003,validation,phone_regex,^\\d{2,3}-\\d{3,4}-\\d{4}$,전화번호 정규식,all
+TC003,validation,required_fields,고객명|고객코드|연락처,필수 필드 목록,ko
+TC003,navigation,tab_count,6,고객 정보 탭 개수,all
+TC003,navigation,tab_names,기본정보|계약정보|방제정보|매출정보|서비스내역|접촉이력,탭 목록,ko
+
+# 루트플랜 테스트 데이터
+TC004,calendar,current_year,2025,현재 연도,all
+TC004,calendar,work_days,월|화|수|목|금,근무일 목록,ko
+TC004,plan,plan_types,정기방역|수시방역|점검,플랜 유형,ko
+TC004,validation,plan_status,예정|진행중|완료|취소,플랜 상태 목록,ko
+TC004,time,work_start,09:00,근무 시작 시간,all
+TC004,time,work_end,18:00,근무 종료 시간,all
+
+# 설치/회수 관리 테스트 데이터
+TC005,equipment,types,포충기|살균기|방충망|기타,장비 유형,ko
+TC005,status,installation,설치예정|설치완료|설치불가|연기,설치 상태,ko
+TC005,status,removal,회수예정|회수완료|회수불가|연기,회수 상태,ko
+TC005,validation,required_fields,고객코드|장비유형|설치일|담당자,설치 필수 필드,ko
+TC005,date,default_period,30,기본 조회 기간(일),all
+
+# 수금 등록 테스트 데이터
+TC006,payment,methods,현금|카드|계좌이체|어음,결제 방법,ko
+TC006,amount,test_values,10000|50000|100000|500000,테스트 금액,all
+TC006,amount,min_value,1000,최소 수금액,all
+TC006,amount,max_value,10000000,최대 수금액,all
+TC006,validation,amount_regex,^[0-9]+$,금액 정규식,all
+TC006,message,success,수금이 등록되었습니다,성공 메시지,ko
+TC006,message,success,Collection registered successfully,성공 메시지,en
+TC006,message,success,收款已成功登记,성공 메시지,zh
+TC006,message,success,Thu tiền đã được đăng ký thành công,성공 메시지,vi
+
+# 공통 에러 메시지
+ALL,error,network_error,네트워크 연결을 확인해주세요,네트워크 에러,ko
+ALL,error,network_error,Please check network connection,네트워크 에러,en
+ALL,error,network_error,请检查网络连接,네트워크 에러,zh
+ALL,error,network_error,Vui lòng kiểm tra kết nối mạng,네트워크 에러,vi
+ALL,error,session_expired,세션이 만료되었습니다,세션 만료,ko
+ALL,error,permission_denied,권한이 없습니다,권한 에러,ko
+
+# 성능 테스트 임계값
+ALL,performance,page_load_max,10,페이지 로딩 최대 시간(초),all
+ALL,performance,search_response_max,5,검색 응답 최대 시간(초),all
+ALL,performance,api_response_max,3,API 응답 최대 시간(초),all

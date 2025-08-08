@@ -1,0 +1,66 @@
+[
+  {
+    "test_id": "TEST_GNB2000",
+    "screen_id": "GNB2000",
+    "url": "GNB2000",
+    "steps": [
+      { "action": "input", "selector": "//input[@name='username']", "value": "testuser" },
+      { "action": "input", "selector": "//input[@name='password']", "value": "1234" },
+      { "action": "click", "selector": "//button[text()='로그인']" }
+    ],
+    "assert_text": "메뉴"
+  },
+  {
+    "test_id": "TEST_CUS1000",
+    "screen_id": "CUS1000",
+    "url": "CUS1000",
+    "steps": [
+      { "action": "input", "selector_css": ".active > input", "value": "1" },
+      { "action": "click", "selector_css": ".active .btn_search"}
+    ],
+    "assert_text": "고객검색"
+  },
+  {
+    "test_id": "TEST_CUS1110",
+    "screen_id": "CUS1110",
+    "url": "CUS1110?CustCode=AA2778",
+    "steps": [
+      { "action": "input", "selector": "//input[@name='username']", "value": "testuser" },
+      { "action": "input", "selector": "//input[@name='password']", "value": "1234" },
+      { "action": "click", "selector": "//button[text()='로그인']" }
+    ],
+    "assert_text": "고객기본정보"
+  },
+  {
+    "test_id": "TEST_CUS1120",
+    "screen_id": "CUS1120",
+    "url": "CUS1120?CustCode=AA2778",
+    "steps": [
+      { "action": "input", "selector": "//input[@name='username']", "value": "testuser" },
+      { "action": "input", "selector": "//input[@name='password']", "value": "1234" },
+      { "action": "click", "selector": "//button[text()='로그인']" }
+    ],
+    "assert_text": "고객 계약정보"
+  },
+  {
+    "test_id": "TEST_RTP1000",
+    "screen_id": "RTP1000",
+    "url": "RTP1000",
+    "steps": [],
+    "assert_text": "플랜 조회"
+  },
+  {
+    "test_id": "TEST_RTP1200",
+    "screen_id": "RTP1200",
+    "url": "RTP1200",
+    "steps": [],
+    "assert_text": "플랜 조회"
+  },
+  {
+    "test_id": "TEST_RTP2200",
+    "screen_id": "RTP2200",
+    "url": "RTP2200",
+    "steps": [],
+    "assert_text": "플랜 조회"
+  }
+]
