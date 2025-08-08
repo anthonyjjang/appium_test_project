@@ -54,16 +54,71 @@ TC006,message,success,수금이 등록되었습니다,성공 메시지,ko
 TC006,message,success,Collection registered successfully,성공 메시지,en
 TC006,message,success,收款已成功登记,성공 메시지,zh
 TC006,message,success,Thu tiền đã được đăng ký thành công,성공 메시지,vi
+TC006,message,success,การรับเงินได้รับการลงทะเบียนสำเร็จ,성공 메시지,th
+TC006,message,success,Koleksi berhasil didaftarkan,성공 메시지,id
 
 # 공통 에러 메시지
 ALL,error,network_error,네트워크 연결을 확인해주세요,네트워크 에러,ko
 ALL,error,network_error,Please check network connection,네트워크 에러,en
 ALL,error,network_error,请检查网络连接,네트워크 에러,zh
 ALL,error,network_error,Vui lòng kiểm tra kết nối mạng,네트워크 에러,vi
+ALL,error,network_error,กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต,네트워크 에러,th
+ALL,error,network_error,Silakan periksa koneksi jaringan,네트워크 에러,id
 ALL,error,session_expired,세션이 만료되었습니다,세션 만료,ko
+ALL,error,session_expired,Session has expired,세션 만료,en
+ALL,error,session_expired,会话已过期,세션 만료,zh
+ALL,error,session_expired,Phiên đã hết hạn,세션 만료,vi
+ALL,error,session_expired,เซสชันหมดอายุแล้ว,세션 만료,th
+ALL,error,session_expired,Sesi telah berakhir,세션 만료,id
 ALL,error,permission_denied,권한이 없습니다,권한 에러,ko
+ALL,error,permission_denied,Permission denied,권한 에러,en
+ALL,error,permission_denied,权限不足,권한 에러,zh
+ALL,error,permission_denied,Không có quyền truy cập,권한 에러,vi
+ALL,error,permission_denied,ไม่มีสิทธิ์เข้าถึง,권한 에러,th
+ALL,error,permission_denied,Akses ditolak,권한 에러,id
+
+# 태국 특화 테스트 데이터
+TC007,thai,company_name,บริษัท เชสโก้ (ประเทศไทย) จำกัด,태국 회사명,th
+TC007,thai,pest_types,แมลงสาบ|มด|ปลวก|หนู,해충 유형,th
+TC007,thai,service_status,กำหนดการ|กำลังดำเนินการ|เสร็จสมบูรณ์|ยกเลิก,서비스 상태,th
+TC007,validation,address_format,^[ก-ฮ\s\d\/\-\.]+$,태국 주소 정규식,th
+
+# 인도네시아 특화 테스트 데이터
+TC008,indonesian,company_name,PT. CESCO Indonesia,인도네시아 회사명,id
+TC008,indonesian,pest_types,kecoak|semut|rayap|tikus,해충 유형,id
+TC008,indonesian,service_status,dijadwalkan|sedang berlangsung|selesai|dibatalkan,서비스 상태,id
+TC008,validation,address_format,^[A-Za-z\s\d\/\-\.]+$,인도네시아 주소 정규식,id
+
+# 다국가 통화 형식
+ALL,currency,format_vnd,{amount:,.0f} ₫,베트남 동 형식,vi
+ALL,currency,format_cny,¥{amount:,.2f},중국 위안 형식,zh
+ALL,currency,format_krw,₩{amount:,.0f},한국 원 형식,ko
+ALL,currency,format_thb,฿{amount:,.2f},태국 바트 형식,th
+ALL,currency,format_idr,Rp {amount:,.0f},인도네시아 루피아 형식,id
+
+# 다국가 날짜 형식
+ALL,date,format_vn,DD/MM/YYYY,베트남 날짜 형식,vi
+ALL,date,format_cn,YYYY-MM-DD,중국 날짜 형식,zh
+ALL,date,format_kr,YYYY-MM-DD,한국 날짜 형식,ko
+ALL,date,format_th,DD/MM/YYYY,태국 날짜 형식,th
+ALL,date,format_id,DD/MM/YYYY,인도네시아 날짜 형식,id
 
 # 성능 테스트 임계값
 ALL,performance,page_load_max,10,페이지 로딩 최대 시간(초),all
 ALL,performance,search_response_max,5,검색 응답 최대 시간(초),all
 ALL,performance,api_response_max,3,API 응답 최대 시간(초),all
+
+# 언어별 UI 텍스트
+ALL,ui,login_button,로그인,로그인 버튼,ko
+ALL,ui,login_button,Login,로그인 버튼,en
+ALL,ui,login_button,登录,로그인 버튼,zh
+ALL,ui,login_button,Đăng nhập,로그인 버튼,vi
+ALL,ui,login_button,เข้าสู่ระบบ,로그인 버튼,th
+ALL,ui,login_button,Masuk,로그인 버튼,id
+
+ALL,ui,search_placeholder,고객 검색...,검색 플레이스홀더,ko
+ALL,ui,search_placeholder,Search customers...,검색 플레이스홀더,en
+ALL,ui,search_placeholder,搜索客户...,검색 플레이스홀더,zh
+ALL,ui,search_placeholder,Tìm kiếm khách hàng...,검색 플레이스홀더,vi
+ALL,ui,search_placeholder,ค้นหาลูกค้า...,검색 플레이스홀더,th
+ALL,ui,search_placeholder,Cari pelanggan...,검색 플레이스홀더,id

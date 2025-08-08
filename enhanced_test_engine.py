@@ -7,33 +7,68 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from appium.webdriver.common.appiumby import AppiumBy
+from localization_manager import get_localization_manager, get_localized_text
 
 class EnhancedTestEngine:
     """향상된 테스트 실행 엔진 - 상세한 검증 로직 포함"""
     
-    def __init__(self, driver, wait_timeout=20):
+    def __init__(self, driver, wait_timeout=20, country_code='KR'):
         self.driver = driver
         self.wait = WebDriverWait(driver, wait_timeout)
+        self.country_code = country_code
+        self.localization_manager = get_localization_manager()
         self.test_data = {}
         self.load_test_data()
         
     def load_test_data(self):
-        """테스트 데이터 로딩"""
+        """테스트 데이터 로딩 - 언어별 데이터 지원"""
         try:
             with open('test_data.csv', 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    if row['test_id'] not in self.test_data:
-                        self.test_data[row['test_id']] = {}
-                    if row['data_type'] not in self.test_data[row['test_id']]:
-                        self.test_data[row['test_id']][row['data_type']] = {}
-                    self.test_data[row['test_id']][row['data_type']][row['key']] = row['value']
+                    if row['test_id'].startswith('#'):  # 주석 행 건너뛰기
+                        continue
+                        
+                    test_id = row['test_id']
+                    data_type = row['data_type']
+                    key = row['key']
+                    locale = row.get('locale', 'all')
+                    
+                    if test_id not in self.test_data:
+                        self.test_data[test_id] = {}
+                    if data_type not in self.test_data[test_id]:
+                        self.test_data[test_id][data_type] = {}
+                    
+                    # 언어별 키로 저장
+                    localized_key = f"{key}_{locale}"
+                    self.test_data[test_id][data_type][localized_key] = row['value']
+                    
         except FileNotFoundError:
             print("Warning: test_data.csv not found, using default values")
             
-    def get_test_data(self, test_id, data_type, key, default=None):
-        """테스트 데이터 조회"""
-        return self.test_data.get(test_id, {}).get(data_type, {}).get(key, default)
+    def get_test_data(self, test_id, data_type, key, language='ko', default=None):
+        """언어별 테스트 데이터 조회"""
+        # LocalizationManager를 사용한 조회
+        localized_value = self.localization_manager.get_localized_value(
+            test_id, data_type, key, language
+        )
+        if localized_value:
+            return localized_value
+        
+        # 기존 방식 폴백
+        # 1차: 특정 언어
+        localized_key = f"{key}_{language}"
+        value = self.test_data.get(test_id, {}).get(data_type, {}).get(localized_key)
+        if value:
+            return value
+        
+        # 2차: 공통 데이터
+        all_key = f"{key}_all"
+        value = self.test_data.get(test_id, {}).get(data_type, {}).get(all_key)
+        if value:
+            return value
+        
+        return default
     
     def get_locator(self, selector_type, selector_value):
         """셀렉터 타입에 따른 로케이터 생성"""
@@ -48,6 +83,7 @@ class EnhancedTestEngine:
         return (selector_map.get(selector_type.upper(), AppiumBy.XPATH), selector_value)
     
     def execute_step(self, step, test_id, lang='ko'):
+        """테스트 스텝 실행 - 다국가/다언어 지원 향상"""
         """향상된 단일 스텝 실행"""
         action = step.get('action', '').lower()
         selector_type = step.get('selector_type', '')

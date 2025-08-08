@@ -2,3 +2,5 @@ user_id,user_pw,country_code,app_package,webview_name,description
 c89109,mcnc1234!!,VN,com.cesco.oversea.srs.viet,WEBVIEW_com.cesco.oversea.srs.viet,베트남 사용자
 c89110,mcnc1234!!,CN,com.cesco.oversea.srs.cn,WEBVIEW_com.cesco.oversea.srs.cn,중국 사용자
 c89111,mcnc1234!!,KR,com.cesco.oversea.srs.dev,WEBVIEW_com.cesco.oversea.srs.dev,한국 사용자
+c89112,mcnc1234!!,TH,com.cesco.oversea.srs.thai,WEBVIEW_com.cesco.oversea.srs.thai,태국 사용자
+c89113,mcnc1234!!,ID,com.cesco.oversea.srs.indo,WEBVIEW_com.cesco.oversea.srs.indo,인도네시아 사용자
