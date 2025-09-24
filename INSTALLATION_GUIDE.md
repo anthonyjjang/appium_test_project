@@ -182,7 +182,7 @@ pip install openpyxl>=3.1.0
 
 ### 1. 개발자 옵션 활성화
 ```
-1. 설정 > 휴대전화 정보 (또는 디바이스 정보)
+1. 설정 > 휴대전화 정보 > 소프트웨어 정보 (또는 디바이스 정보)
 2. 빌드번호를 7번 연속 탭
 3. "개발자가 되었습니다" 메시지 확인
 ```
@@ -252,6 +252,12 @@ testuser01,testpass123,CN,com.cesco.oversea.srs.cn,WEBVIEW_com.cesco.oversea.srs
 ```bash
 # 환경 검증 스크립트 실행
 python verify_environment.py
+
+# 예상 출력:
+# ✅ PASSED CHECKS: 18개
+# ⚠️  WARNINGS: 0개  
+# ❌ ERRORS: 0개
+# 📊 SUMMARY: Success Rate: 100.0%
 ```
 
 ### 수동 검증 단계
@@ -260,6 +266,9 @@ python verify_environment.py
 ```bash
 java -version
 # openjdk version "11.0.x" 이상 출력 확인
+
+echo $JAVA_HOME
+# /opt/homebrew/opt/openjdk (Mac) 또는 유사한 경로 확인
 ```
 
 #### 2. Android SDK
@@ -268,22 +277,30 @@ adb version
 # Android Debug Bridge version 1.0.x 출력 확인
 
 adb devices
-# 연결된 디바이스 목록 출력 확인
+# List of devices attached
+# RFCM902ZM9K    device  ← 정상 연결 확인
+
+# 환경변수 확인
+echo $ANDROID_HOME
+# /Users/username/Library/Android/sdk (Mac) 또는 유사한 경로
 ```
 
 #### 3. Appium 서버
 ```bash
 appium --version
-# 2.x.x 또는 1.22.x 이상 출력 확인
+# 3.0.2 이상 출력 확인
 
 appium driver list
-# uiautomator2 드라이버 설치 확인
+# uiautomator2@5.0.1 [installed (npm)] 확인
 ```
 
 #### 4. Python 패키지
 ```bash
 pip list | grep -i appium
 # Appium-Python-Client 3.1.x 이상 확인
+
+pip list | grep python-dotenv
+# python-dotenv 1.0.x 이상 확인
 
 python -c "from appium import webdriver; print('Appium client OK')"
 # "Appium client OK" 출력 확인
@@ -296,6 +313,12 @@ appium
 
 # 테스트 실행 (다른 터미널)
 python appium_test_runner.py
+
+# 성공 시 예상 출력:
+# 🎬 Starting Enhanced Test Scenarios
+# 📊 Target languages: ['zh', 'ko', 'en']
+# 📱 Target device: RFCM902ZM9K
+# 📦 Target app: com.cesco.oversea.srs.cn
 ```
 
 ## 📝 환경 검증 체크리스트
@@ -334,6 +357,9 @@ python appium_test_runner.py
 adb kill-server
 adb start-server
 adb devices
+
+# "unauthorized" 상태인 경우
+# 디바이스에서 "USB 디버깅을 허용하시겠습니까?" 팝업에서 "허용" 선택
 ```
 
 #### 2. Appium 연결 실패
@@ -349,15 +375,90 @@ lsof -i :4723                 # Mac/Linux
 appium -p 4724
 ```
 
-#### 3. WebView 컨텍스트 전환 실패
+#### 3. ANDROID_HOME 환경변수 오류
+```bash
+# Mac/Linux에서 환경변수 설정
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+# 영구적으로 설정하려면 ~/.zshrc 또는 ~/.bashrc에 추가
+echo 'export ANDROID_HOME=$HOME/Library/Android/sdk' >> ~/.zshrc
+echo 'export PATH=$ANDROID_HOME/platform-tools:$PATH' >> ~/.zshrc
+source ~/.zshrc
+```
+
+#### 4. WebView 컨텍스트 전환 실패
 ```bash
 # Chrome 개발자 도구에서 WebView 디버깅 활성화
 # chrome://inspect/#devices
 
 # 앱에서 WebView 디버깅 허용 설정 확인
+
+# WebView가 로드될 때까지 대기하는 로직 추가 (enhanced_test_runner.py)
+# 최대 30초 대기 후 NATIVE_APP 모드로 폴백
 ```
 
-#### 4. 권한 오류
+#### 5. uiautomator2 서버 설치 타임아웃
+```bash
+# capabilities에 타임아웃 설정 추가
+uiautomator2ServerInstallTimeout=60000
+uiautomator2ServerLaunchTimeout=60000
+adbExecTimeout=60000
+```
+
+#### 6. 앱 패키지/Activity 오류
+```bash
+# 설치된 앱 패키지 확인
+adb shell pm list packages | grep cesco
+
+# 앱 Activity 확인
+adb shell dumpsys package com.cesco.oversea.srs.cn | grep Activity
+
+# 올바른 패키지명으로 .env 파일 수정
+DEFAULT_APP_PACKAGE=com.cesco.oversea.srs.viet
+```
+
+#### 7. ChromeDriver 버전 호환성 문제
+```bash
+# ChromeDriver 자동 다운로드 활성화
+chromedriverUseSystemExecutable=True
+
+# 또는 ChromeDriver 수동 설치
+# https://chromedriver.chromium.org/downloads
+```
+
+#### 8. Python 패키지 누락
+```bash
+# python-dotenv 패키지 설치 (환경변수 관리용)
+pip install python-dotenv>=1.0.0
+
+# 또는 requirements.txt로 전체 설치
+pip install -r requirements.txt
+
+# 설치 확인
+pip list | grep python-dotenv
+# python-dotenv 1.0.x 출력 확인
+
+# 가상환경에서 설치되지 않은 경우
+source appium_test_env/bin/activate  # Mac/Linux
+# appium_test_env\Scripts\activate  # Windows
+pip install python-dotenv
+```
+
+#### 9. 디바이스 연결 끊김
+```bash
+# 디바이스 재부팅
+adb reboot
+
+# USB 케이블 재연결
+# 다른 USB 포트 사용
+
+# Appium 서버 재시작
+pkill -f appium
+appium
+```
+
+#### 10. 권한 오류
 ```bash
 # Android 앱 권한 수동 허용
 adb shell pm grant com.your.app android.permission.CAMERA

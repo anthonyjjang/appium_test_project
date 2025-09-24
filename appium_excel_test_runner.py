@@ -1,7 +1,6 @@
 import unittest
 import time
 import os
-import pandas as pd
 import csv
 from datetime import datetime
 from dotenv import load_dotenv
@@ -21,7 +20,8 @@ start_time = datetime.now().strftime('%Y%m%d_%H%M%S')
 SCREENSHOT_DIR = os.path.join('screenshots', f'test_{start_time}')
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 RESULT_CSV_FILE = f'test_results_{start_time}.csv'
-TEST_EXCEL_FILE = os.getenv('TEST_EXCEL_FILE', 'test_scenarios.xlsx')
+TEST_CASES_FILE = os.getenv('TEST_CASES_FILE', 'test_cases.csv')
+TEST_STEPS_FILE = os.getenv('TEST_STEPS_FILE', 'test_steps.csv')
 
 # App settings from environment (Excel runner specific - Vietnam focused)
 BASE_URL = os.getenv('BASE_URL', 'http://localhost/')
@@ -31,7 +31,7 @@ SLEEP_TIME = int(os.getenv('SLEEP_TIME', '3'))
 WEBVIEW_NAME = os.getenv('EXCEL_WEBVIEW_NAME', 'WEBVIEW_com.cesco.oversea.srs.viet')
 APP_PACKAGE = os.getenv('EXCEL_APP_PACKAGE', 'com.cesco.oversea.srs.viet')
 APP_ACTIVITY = os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity')
-UDID = os.getenv('EXCEL_UDID', 'RFCX715QHAL')
+UDID = os.getenv('EXCEL_UDID', 'RFCM902ZM9K')
 
 # Login credentials from environment
 USER_ID = os.getenv('USER_ID', 'c89109')
@@ -63,7 +63,25 @@ def get_driver():
         appPackage=APP_PACKAGE,
         appActivity=APP_ACTIVITY,
         noReset=True,
-        fullReset=False
+        fullReset=False,
+        # WEBVIEW 관련 설정 (강화된 Chromedriver 지원)
+        chromedriverAutodownload=True,
+        chromedriverExecutable='/Users/loveauden/.appium/chromedriver/chromedriver-mac-arm64/chromedriver',  # 직접 경로 지정
+        chromedriverChromeMappingFile=None,  # 자동 매핑 사용
+        skipLogCapture=True,  # 로그 캡처 건너뛰기
+        autoWebview=False,  # 수동 웹뷰 전환
+        recreateChromeDriverSessions=True,  # 세션 재생성
+        chromeOptions={
+            'w3c': False,
+            'args': [
+                '--disable-dev-shm-usage', 
+                '--no-sandbox',
+                '--disable-web-security',
+                '--disable-features=VizDisplayCompositor',
+                '--disable-extensions',
+                '--disable-plugins'
+            ]
+        }
     )
     options = UiAutomator2Options().load_capabilities(capabilities)
     appium_host = os.getenv('APPIUM_HOST', 'localhost')
@@ -89,44 +107,60 @@ def log_result(lang, test_id, screen_id, status, message, description=None):
             message
         ])
 
-def load_test_cases_from_excel():
-    """Read test scenarios from Excel file"""
+def load_test_cases_from_csv():
+    """Read test scenarios from CSV files"""
     try:
-        # Read main test cases sheet
-        df_cases = pd.read_excel(TEST_EXCEL_FILE, sheet_name='TestCases')
-        # Read test steps sheet
-        df_steps = pd.read_excel(TEST_EXCEL_FILE, sheet_name='TestSteps')
-        
+        # Read test cases CSV
         test_cases = []
+        with open(TEST_CASES_FILE, 'r', encoding='utf-8') as f:
+            cases_reader = csv.DictReader(f)
+            cases_data = list(cases_reader)
         
-        for _, case in df_cases.iterrows():
-            # Get all steps for current test case
-            case_steps = df_steps[df_steps['test_id'] == case['test_id']].sort_values('step_order')
+        # Read test steps CSV
+        with open(TEST_STEPS_FILE, 'r', encoding='utf-8') as f:
+            steps_reader = csv.DictReader(f)
+            steps_data = list(steps_reader)
+        
+        # Group steps by test_id
+        steps_by_test = {}
+        for step in steps_data:
+            test_id = step['test_id']
+            if test_id not in steps_by_test:
+                steps_by_test[test_id] = []
+            steps_by_test[test_id].append(step)
+        
+        # Create test cases
+        for case_data in cases_data:
+            test_id = case_data['test_id']
+            
+            # Get steps for this test case and sort by step_order
+            case_steps = steps_by_test.get(test_id, [])
+            case_steps.sort(key=lambda x: int(x['step_order']))
             
             steps = []
-            for _, step in case_steps.iterrows():
+            for step_data in case_steps:
                 test_step = TestStep(
-                    action=step['action'],
-                    selector_type=step['selector_type'],
-                    selector_value=step['selector_value'],
-                    input_value=step['input_value'] if 'input_value' in step else None,
-                    description=step['description'] if 'description' in step else None
+                    action=step_data['action'],
+                    selector_type=step_data['selector_type'],
+                    selector_value=step_data['selector_value'],
+                    input_value=step_data['input_value'] if step_data['input_value'] else None,
+                    description=step_data['description'] if step_data['description'] else None
                 )
                 steps.append(test_step)
             
             test_case = TestCase(
-                test_id=case['test_id'],
-                screen_id=case['screen_id'],
-                url=case['url'],
-                description=case['description'],
+                test_id=case_data['test_id'],
+                screen_id=case_data['screen_id'],
+                url=case_data['url'],
+                description=case_data['description'],
                 steps=steps,
-                expected_result=case['expected_result'] if 'expected_result' in case else None
+                expected_result=case_data['expected_result'] if case_data['expected_result'] else None
             )
             test_cases.append(test_case)
             
         return test_cases
     except Exception as e:
-        print(f"Error loading test cases from Excel: {str(e)}")
+        print(f"Error loading test cases from CSV: {str(e)}")
         return []
 
 def change_language(driver, wait, lang):
@@ -216,12 +250,12 @@ def run_test_case(driver, wait, lang, test_case):
         log_result(lang, test_case.test_id, test_case.screen_id, "FAIL", str(e), test_case.description)
         return False
 
-class TestExcelScenarios(unittest.TestCase):
+class TestCsvScenarios(unittest.TestCase):
     def test_all_scenarios(self):
-        # Load test cases from Excel
-        test_cases = load_test_cases_from_excel()
+        # Load test cases from CSV
+        test_cases = load_test_cases_from_csv()
         if not test_cases:
-            self.fail("No test cases loaded from Excel file")
+            self.fail("No test cases loaded from CSV files")
 
         # Initialize driver
         driver = get_driver()
@@ -253,4 +287,17 @@ class TestExcelScenarios(unittest.TestCase):
             driver.quit()
 
 if __name__ == '__main__':
+    print("🚀 CSV 기반 Appium 테스트 실행기 (베트남 패키지)")
+    print("=" * 60)
+    print(f"📁 테스트 케이스 파일: {TEST_CASES_FILE}")
+    print(f"📁 테스트 스텝 파일: {TEST_STEPS_FILE}")
+    print(f"📱 디바이스: {UDID}")
+    print(f"📦 앱 패키지: {APP_PACKAGE}")
+    print(f"🌐 웹뷰 컨텍스트: {WEBVIEW_NAME}")
+    print(f"🌐 베이스 URL: {BASE_URL}")
+    print(f"🔑 로그인 경로: {LOGIN_PATH}")
+    print(f"🌍 지원 언어: {', '.join(LANGUAGES)}")
+    print(f"📁 스크린샷 저장: {SCREENSHOT_DIR}")
+    print(f"📊 결과 파일: {RESULT_CSV_FILE}")
+    print("=" * 60)
     unittest.main() 

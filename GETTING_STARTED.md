@@ -168,6 +168,9 @@ ls test_results_enhanced_*.csv
 adb kill-server
 adb start-server
 adb devices
+
+# 5. "unauthorized" 상태인 경우
+# 디바이스에서 "USB 디버깅을 허용하시겠습니까?" 팝업에서 "허용" 선택
 ```
 
 ### ❌ Appium 연결 오류
@@ -201,6 +204,44 @@ adb shell pm list packages | grep cesco
 # 2. 앱이 백그라운드에서 종료되지 않았는지 확인
 # 3. 디바이스 재부팅 후 재시도
 # 4. Appium 서버 재시작
+```
+
+### ❌ ANDROID_HOME 환경변수 오류
+```bash
+# Mac/Linux에서 환경변수 설정
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+# 영구적으로 설정
+echo 'export ANDROID_HOME=$HOME/Library/Android/sdk' >> ~/.zshrc
+echo 'export PATH=$ANDROID_HOME/platform-tools:$PATH' >> ~/.zshrc
+source ~/.zshrc
+```
+
+### ❌ python-dotenv 패키지 누락
+```bash
+# 패키지 설치 (환경변수 관리용)
+pip install python-dotenv>=1.0.0
+
+# 또는 전체 패키지 설치
+pip install -r requirements.txt
+
+# 설치 확인
+pip list | grep python-dotenv
+# python-dotenv 1.0.x 출력 확인
+
+# 가상환경에서 설치되지 않은 경우
+source appium_test_env/bin/activate  # Mac/Linux
+# appium_test_env\Scripts\activate  # Windows
+pip install python-dotenv
+```
+
+### ❌ uiautomator2 서버 타임아웃
+```bash
+# enhanced_test_runner.py에서 capabilities 설정 확인
+# uiautomator2ServerInstallTimeout=60000
+# uiautomator2ServerLaunchTimeout=60000
+# adbExecTimeout=60000
 ```
 
 ## 📱 지원되는 앱 버전

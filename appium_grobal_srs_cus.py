@@ -11,17 +11,34 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 capabilities = dict(
-    #chromedriverExecutable = '/Volumes/Data/CESCO_APPTEST/chromedriver',
     platformName='Android',
     automationName='uiautomator2',
-    udid = 'R3CW509J2RE', #테스트 단말기 목록, 계정정보 외 시나리오 기반으로 진행행, 'ce0916097236850f05'(A90 이창건 매니저 테스트폰)
+    udid = 'RFCM902ZM9K', #테스트 단말기 목록, 계정정보 외 시나리오 기반으로 진행행, 'ce0916097236850f05'(A90 이창건 매니저 테스트폰)
     #deviceName='Samsung 11',
-    appPackage='com.cesco.oversea.srs.dev',
+    appPackage='com.cesco.oversea.srs.viet',
     appActivity='com.mcnc.bizmob.cesco.SlideFragmentActivity',
     #language='en',
     #locale='US',
     noReset=True,  # 앱 데이터 유지
-    fullReset=False  # 앱을 다시 설치하지 않음
+    fullReset=False,  # 앱을 다시 설치하지 않음
+    # WEBVIEW 관련 설정 (강화된 Chromedriver 지원)
+    chromedriverAutodownload=True,
+    chromedriverExecutable='/Users/loveauden/.appium/chromedriver/chromedriver-mac-arm64/chromedriver',  # 직접 경로 지정
+    chromedriverChromeMappingFile=None,  # 자동 매핑 사용
+    skipLogCapture=True,  # 로그 캡처 건너뛰기
+    autoWebview=False,  # 수동 웹뷰 전환
+    recreateChromeDriverSessions=True,  # 세션 재생성
+    chromeOptions={
+        'w3c': False,
+        'args': [
+            '--disable-dev-shm-usage', 
+            '--no-sandbox',
+            '--disable-web-security',
+            '--disable-features=VizDisplayCompositor',
+            '--disable-extensions',
+            '--disable-plugins'
+        ]
+    }
 )
 
 appium_server_url = 'http://localhost:4723' #앱티업 서버 정보보
@@ -78,7 +95,7 @@ class TestAppium(unittest.TestCase):
             for context in contexts:
                 print("INIT Available context: " + context)
             # 웹뷰 컨텍스트로 전환
-            self.driver.switch_to.context('WEBVIEW_com.cesco.oversea.srs.dev')
+            self.driver.switch_to.context('WEBVIEW_com.cesco.oversea.srs.viet')
             # 명시적 대기: 비밀번호 필드가 표시될 때까지 기다립니다.
             wait = WebDriverWait(self.driver, 30)  # 최대 30초 대기
   
@@ -131,14 +148,14 @@ class TestAppium(unittest.TestCase):
             )
             #user_id_field.click() 
             
-            user_id_field.send_keys("your_user_id")  # userID 값 설정
+            user_id_field.send_keys("c89109")  # userID 값 설정
             
             
             user_pw_field = wait.until(
                 EC.presence_of_element_located((AppiumBy.XPATH, "//input[@id='ion-input-0']"))
             )
             
-            user_pw_field.send_keys("your_user_pw")  # userID 값 설정
+            user_pw_field.send_keys("mcnc1234!!")  # userID 값 설정
             login_button = wait.until(
                 #EC.element_to_be_clickable((AppiumBy.XPATH, "//button[contains(.,'로그인')]"))
                 EC.element_to_be_clickable((AppiumBy.CSS_SELECTOR, ".btn01"))
@@ -162,7 +179,7 @@ class TestAppium(unittest.TestCase):
             for context in contexts:
                 print("GO MAIN Available context: " + context)
             # 웹뷰 컨텍스트로 전환
-            self.driver.switch_to.context('WEBVIEW_com.cesco.oversea.srs.dev')
+            self.driver.switch_to.context('WEBVIEW_com.cesco.oversea.srs.viet')
 
             # 명시적 대기: 메인 UI가 표시 될 때 까지 
             wait = WebDriverWait(self.driver, 30)  # 최대 30초 대기

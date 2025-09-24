@@ -1,3 +1,9 @@
+# TestCases Sheet
+test_id,screen_id,url,description,expected_result
+TC001,LOG1000,LOG1000,로그인 테스트,로그인 성공
+TC002,CUS1000,CUS1000,고객 검색 테스트,검색 결과 표시
+
+# TestSteps Sheet
 test_id,step_order,action,selector_type,selector_value,input_value,description
 TC001,1,input,CSS_SELECTOR,.log_id input,c89109,아이디 입력
 TC001,2,input,XPATH,//input[@type='password'],mcnc1234!!,비밀번호 입력
@@ -5,4 +11,4 @@ TC001,3,click,CSS_SELECTOR,.btn01,,로그인 버튼 클릭
 TC001,4,verify,XPATH,//div[@class='main_content'],,메인 화면 확인
 TC002,1,input,XPATH,//input[@placeholder='검색어 입력'],12,검색어 입력
 TC002,2,click,CSS_SELECTOR,.active .btn_search,,검색 버튼 클릭
-TC002,3,verify,CSS_SELECTOR,.grid_content,,검색 결과 확인
+TC002,3,verify,CSS_SELECTOR,.grid_content,,검색 결과 확인 

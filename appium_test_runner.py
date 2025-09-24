@@ -24,12 +24,12 @@ TEST_DEFINITION_FILE = os.getenv('TEST_DEFINITION_FILE', 'test_cases_navi.json')
 RESULT_CSV_FILE = 'test_results.csv'
 BASE_URL = os.getenv('BASE_URL', 'http://localhost/')
 LOGIN_PATH = os.getenv('LOGIN_PATH', 'LOG1000')
-LANGUAGES = os.getenv('CN_LANGUAGES', 'zh,ko,en').split(',')
+LANGUAGES = os.getenv('VI_LANGUAGES', 'vi,ko,en').split(',')
 SLEEP_TIME = int(os.getenv('SLEEP_TIME', '4'))
-WEBVIEW_NAME = os.getenv('CN_WEBVIEW_NAME', 'WEBVIEW_com.cesco.oversea.srs.cn')
-APP_PACKAGE = os.getenv('CN_APP_PACKAGE', 'com.cesco.oversea.srs.cn')
+WEBVIEW_NAME = os.getenv('VI_WEBVIEW_NAME', 'WEBVIEW_com.cesco.oversea.srs.viet')
+APP_PACKAGE = os.getenv('VI_APP_PACKAGE', 'com.cesco.oversea.srs.viet')
 APP_ACTIVITY = os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity')
-UDID = os.getenv('DEFAULT_UDID', 'RFCX715QHAL')
+UDID = os.getenv('DEFAULT_UDID', 'RFCM902ZM9K')
 
 USER_ID = os.getenv('USER_ID', 'c89109')
 USER_PW = os.getenv('USER_PW', 'mcnc1234!!')
@@ -42,7 +42,25 @@ def get_driver():
         appPackage=APP_PACKAGE, 
         appActivity=APP_ACTIVITY,
         noReset=True,
-        fullReset=False
+        fullReset=False,
+        # WEBVIEW 관련 설정 (강화된 Chromedriver 지원)
+        chromedriverAutodownload=True,
+        chromedriverExecutable='/Users/loveauden/.appium/chromedriver/chromedriver-mac-arm64/chromedriver',  # 직접 경로 지정
+        chromedriverChromeMappingFile=None,  # 자동 매핑 사용
+        skipLogCapture=True,  # 로그 캡처 건너뛰기
+        autoWebview=False,  # 수동 웹뷰 전환
+        recreateChromeDriverSessions=True,  # 세션 재생성
+        chromeOptions={
+            'w3c': False,
+            'args': [
+                '--disable-dev-shm-usage', 
+                '--no-sandbox',
+                '--disable-web-security',
+                '--disable-features=VizDisplayCompositor',
+                '--disable-extensions',
+                '--disable-plugins'
+            ]
+        }
     )
     options = UiAutomator2Options().load_capabilities(capabilities)
     appium_host = os.getenv('APPIUM_HOST', 'localhost')
@@ -72,7 +90,7 @@ def change_language(driver, wait, lang):
         lang_btn = wait.until(EC.element_to_be_clickable((AppiumBy.XPATH, "//button[contains(.,'select language')]")))
         lang_btn.click()
         
-        index = {'zh': 1, 'ko': 2, 'en': 3}.get(lang, 1)
+        index = {'vi': 1, 'ko': 2, 'en': 3}.get(lang, 1)
         selector = f"(//input[@name='select'])[{index}]"
         lang_input = wait.until(EC.element_to_be_clickable((AppiumBy.XPATH, selector)))
         lang_input.click()
@@ -261,9 +279,32 @@ class TestAllLanguages(unittest.TestCase):
         cases = load_test_cases()
         driver = get_driver()
         wait = WebDriverWait(driver, int(os.getenv('EXPLICIT_WAIT', '20')))
-        #for context in contexts:
-            #    print("INIT Available context: " + context)
-        driver.switch_to.context(WEBVIEW_NAME)
+        # WebView 컨텍스트 전환 (대기 로직 포함)
+        print(f"🔄 Waiting for WebView context: {WEBVIEW_NAME}")
+        
+        # WebView가 로드될 때까지 최대 30초 대기
+        max_wait_time = 30
+        wait_interval = 2
+        waited_time = 0
+        
+        while waited_time < max_wait_time:
+            available_contexts = driver.contexts
+            print(f"Available contexts: {available_contexts}")
+            
+            if WEBVIEW_NAME in available_contexts:
+                print(f"✅ WebView context found: {WEBVIEW_NAME}")
+                driver.switch_to.context(WEBVIEW_NAME)
+                break
+            else:
+                print(f"⏳ WebView not ready, waiting... ({waited_time}s/{max_wait_time}s)")
+                time.sleep(wait_interval)
+                waited_time += wait_interval
+        
+        if waited_time >= max_wait_time:
+            print(f"⚠️  WebView context not found after {max_wait_time}s, using NATIVE_APP")
+            print(f"Available contexts: {driver.contexts}")
+        else:
+            print(f"✅ Successfully switched to WebView context: {WEBVIEW_NAME}")
         for lang in LANGUAGES:
             #화면 로딩 후후
             change_language(driver, wait, lang)
