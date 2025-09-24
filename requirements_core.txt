@@ -1,0 +1,21 @@
+# requirements_core.txt
+# WEBVIEW 요소 로깅 프로그램 핵심 의존성 (필수 설치)
+
+# Appium 핵심 의존성
+Appium-Python-Client>=3.1.0
+selenium>=4.15.0
+
+# JSON 및 데이터 처리
+jsonschema>=4.17.0
+
+# 로깅 및 출력
+colorlog>=6.7.0
+rich>=13.5.0
+
+# HTML/XML 파싱 (WEBVIEW 요소 분석용)
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# 기본 유틸리티
+python-dotenv>=1.0.0
+pillow>=9.0.0
