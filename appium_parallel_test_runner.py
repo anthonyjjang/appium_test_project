@@ -64,11 +64,14 @@ class TestCase:
         self.expected_result = expected_result
 
 class DeviceConfig:
-    def __init__(self, device_id, udid, platform_name, platform_version):
+    def __init__(self, device_id, udid, platform_name, platform_version, app_package=None, app_activity=None, webview_name=None):
         self.device_id = device_id
         self.udid = udid
         self.platform_name = platform_name
         self.platform_version = platform_version
+        self.app_package = app_package
+        self.app_activity = app_activity
+        self.webview_name = webview_name
 
 class UserConfig:
     def __init__(self, user_id, user_pw, country_code, app_package, webview_name, description):
@@ -155,11 +158,16 @@ def update_devices_csv(connected_devices):
     try:
         # Read existing device configurations
         existing_configs = {}
+        default_config = None
         if os.path.exists(DEVICES_CSV):
             with open(DEVICES_CSV, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
-                for row in reader:
+                rows = list(reader)
+                for row in rows:
                     existing_configs[row['udid']] = row
+                    # 첫 번째 행을 기본값으로 사용
+                    if default_config is None:
+                        default_config = row
         
         # Update configurations with connected devices
         updated_configs = []
@@ -169,7 +177,14 @@ def update_devices_csv(connected_devices):
                 'device_id': config.get('device_id', f"DEVICE_{device['udid'][:8]}"),
                 'udid': device['udid'],
                 'platform_name': device['platform_name'],
-                'platform_version': device['platform_version']
+                'platform_version': device['platform_version'],
+                # 앱 관련 설정 유지 또는 기본값 사용
+                'app_package': config.get('app_package', 
+                    default_config.get('app_package', 'com.cesco.oversea.srs.viet') if default_config else 'com.cesco.oversea.srs.viet'),
+                'app_activity': config.get('app_activity', 
+                    default_config.get('app_activity', 'com.mcnc.bizmob.cesco.SlideFragmentActivity') if default_config else 'com.mcnc.bizmob.cesco.SlideFragmentActivity'),
+                'webview_name': config.get('webview_name', 
+                    default_config.get('webview_name', 'WEBVIEW_com.cesco.oversea.srs.viet') if default_config else 'WEBVIEW_com.cesco.oversea.srs.viet')
             }
             updated_configs.append(updated_config)
         
@@ -209,7 +224,10 @@ def load_configurations():
                 device_id=row['device_id'],
                 udid=row['udid'],
                 platform_name=row['platform_name'],
-                platform_version=row['platform_version']
+                platform_version=row['platform_version'],
+                app_package=row.get('app_package'),
+                app_activity=row.get('app_activity'),
+                webview_name=row.get('webview_name')
             )
             devices.append(device)
             
@@ -290,17 +308,142 @@ def log_result(lang, test_id, screen_id, status, message, device_id, user_id, de
                 message
             ])
 
+def kill_app_process(device_udid, app_package, clear_data=False):
+    """앱 프로세스 종료 (데이터 유지 옵션)"""
+    try:
+        import subprocess
+        print(f"🔄 앱 강제 종료 중 (데이터 {'정리' if clear_data else '유지'})...")
+        
+        # 앱 프로세스 종료 (데이터 유지)
+        result = subprocess.run([
+            'adb', '-s', device_udid, 'shell', 'am', 'force-stop', app_package
+        ], check=False, capture_output=True, text=True, timeout=10)
+        
+        if result.returncode == 0:
+            print(f"✅ 앱 강제 종료 완료: {app_package}")
+            if not clear_data:
+                print("💾 앱 데이터 유지됨 (로그인 상태, 설정 등 보존)")
+        else:
+            print(f"⚠️ 앱 강제 종료 실패: {result.stderr}")
+        
+        # 앱 데이터 정리 (선택사항)
+        if clear_data:
+            clear_result = subprocess.run([
+                'adb', '-s', device_udid, 'shell', 'pm', 'clear', app_package
+            ], check=False, capture_output=True, text=True, timeout=10)
+            
+            if clear_result.returncode == 0:
+                print(f"🗑️ 앱 데이터 정리 완료: {app_package}")
+            else:
+                print(f"⚠️ 앱 데이터 정리 실패: {clear_result.stderr}")
+        
+        # 앱 프로세스 확인
+        check_result = subprocess.run([
+            'adb', '-s', device_udid, 'shell', 'ps', '|', 'grep', app_package
+        ], check=False, capture_output=True, text=True, timeout=5, shell=True)
+        
+        if app_package in check_result.stdout:
+            print("⚠️ 앱이 여전히 실행 중일 수 있음")
+        else:
+            print("✅ 앱 완전 종료 확인")
+        
+        return True
+    except subprocess.TimeoutExpired:
+        print("⚠️ 앱 종료 명령 타임아웃")
+        return False
+    except Exception as e:
+        print(f"❌ 앱 종료 중 오류: {str(e)}")
+        return False
+
+def restart_app(driver, device_udid, app_package, app_activity, clear_data=False):
+    """앱 재시작 (데이터 유지 옵션)"""
+    try:
+        print(f"🔄 앱 재시작 중: {app_package} (데이터 {'정리' if clear_data else '유지'})")
+        
+        # 1. 현재 앱 종료 (데이터 유지)
+        try:
+            driver.terminate_app(app_package)
+            print("✅ Appium을 통한 앱 종료 완료")
+        except Exception as e:
+            print(f"⚠️ Appium을 통한 앱 종료 실패: {e}")
+        
+        time.sleep(2)
+        
+        # 2. 앱 프로세스 강제 종료 (데이터 유지)
+        kill_app_process(device_udid, app_package, clear_data=clear_data)
+        time.sleep(2)
+        
+        # 3. 앱 재시작 (데이터 유지)
+        try:
+            driver.activate_app(app_package)
+            print("✅ 앱 재시작 완료")
+        except Exception as e:
+            print(f"⚠️ Appium을 통한 앱 재시작 실패: {e}")
+            # adb를 통한 앱 시작 시도
+            try:
+                import subprocess
+                subprocess.run([
+                    'adb', '-s', device_udid, 'shell', 'am', 'start', 
+                    '-n', f'{app_package}/{app_activity}'
+                ], check=False, capture_output=True, timeout=10)
+                print("✅ adb를 통한 앱 시작 완료")
+            except Exception as adb_e:
+                print(f"❌ adb를 통한 앱 시작도 실패: {adb_e}")
+                return False
+        
+        time.sleep(3)
+        
+        print(f"🎉 앱 재시작 성공: {app_package}")
+        return True
+    except Exception as e:
+        print(f"❌ 앱 재시작 실패: {str(e)}")
+        return False
+
 def get_driver(device_config, user_config, appium_port):
     """Initialize Appium driver with device-specific capabilities"""
+    # 디바이스 설정 우선, 없으면 사용자 설정, 마지막으로 환경변수 사용
+    app_package = (device_config.app_package or 
+                  user_config.app_package or 
+                  os.getenv('DEFAULT_APP_PACKAGE', 'com.cesco.oversea.srs.viet'))
+    
+    app_activity = (device_config.app_activity or 
+                   os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity'))
+    
     capabilities = dict(
         platformName=device_config.platform_name,
         platformVersion=device_config.platform_version,
         automationName='uiautomator2',
         udid=device_config.udid,
-        appPackage=user_config.app_package,
-        appActivity=os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity'),
-        noReset=True,
-        fullReset=False
+        appPackage=app_package,
+        appActivity=app_activity,
+        noReset=True,  # 앱 데이터 유지 (초기화하지 않음)
+        fullReset=False,  # 전체 초기화하지 않음
+        forceAppLaunch=True,  # 앱 강제 재시작
+        shouldTerminateApp=True,  # 기존 앱 종료
+        # WEBVIEW 관련 설정 (강화된 Chromedriver 지원)
+        chromedriverAutodownload=True,
+        chromedriverExecutable='/Users/loveauden/.appium/chromedriver/chromedriver-mac-arm64/chromedriver',  # 직접 경로 지정
+        chromedriverChromeMappingFile=None,  # 자동 매핑 사용
+        skipLogCapture=True,  # 로그 캡처 건너뛰기
+        
+        # Android 14 호환성 설정
+        uiautomator2ServerInstallTimeout=120000,  # 2분
+        uiautomator2ServerLaunchTimeout=120000,   # 2분
+        adbExecTimeout=120000,  # 2분
+        systemPort=8200 + hash(device_config.udid) % 1000,  # 고유 포트 할당
+        autoWebview=False,  # 수동 웹뷰 전환
+        recreateChromeDriverSessions=True,  # 세션 재생성
+        chromeOptions={
+            'w3c': False,
+            'args': [
+                '--disable-dev-shm-usage', 
+                '--no-sandbox',
+                '--disable-web-security',
+                '--disable-features=VizDisplayCompositor',
+                '--disable-extensions',
+                '--disable-plugins'
+            ]
+        }
     )
     options = UiAutomator2Options().load_capabilities(capabilities)
     appium_host = os.getenv('APPIUM_HOST', 'localhost')
@@ -373,6 +516,19 @@ def execute_test_step(driver, wait, step):
 def run_test_case(driver, wait, lang, test_case, device_config, user_config):
     """Execute a complete test case"""
     try:
+        # 테스트 케이스 시작 전 앱 상태 확인 및 재시작
+        restart_between_tests = os.getenv('RESTART_APP_BETWEEN_TESTS', 'true').lower() == 'true'
+        clear_app_data = os.getenv('CLEAR_APP_DATA', 'false').lower() == 'true'
+        if restart_between_tests:
+            app_package = (device_config.app_package or 
+                          user_config.app_package or 
+                          os.getenv('DEFAULT_APP_PACKAGE', 'com.cesco.oversea.srs.viet'))
+            app_activity = (device_config.app_activity or 
+                           os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity'))
+            
+            print(f"🔄 테스트 케이스 전 앱 재시작: {test_case.test_id} (데이터 {'정리' if clear_app_data else '유지'})")
+            restart_app(driver, device_config.udid, app_package, app_activity, clear_data=clear_app_data)
+        
         if test_case.url:
             full_url = BASE_URL + test_case.url
             driver.get(full_url)
@@ -473,15 +629,37 @@ def run_pair_tests(test_pair, test_cases, appium_port):
         print(f"- Users: {[user.user_id for user in test_pair.user_configs]}")
         print(f"- Languages: {test_pair.languages}")
         
+        # 앱 패키지 정보 가져오기
+        app_package = (test_pair.device_config.app_package or 
+                      test_pair.user_configs[0].app_package or 
+                      os.getenv('DEFAULT_APP_PACKAGE', 'com.cesco.oversea.srs.viet'))
+        
+        app_activity = (test_pair.device_config.app_activity or 
+                       os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity'))
+        
+        # 테스트 시작 전 앱 종료 및 재시작
+        restart_between_tests = os.getenv('RESTART_APP_BETWEEN_TESTS', 'true').lower() == 'true'
+        clear_app_data = os.getenv('CLEAR_APP_DATA', 'false').lower() == 'true'
+        print(f"\nPreparing app {app_package} on device {test_pair.device_config.udid}...")
+        kill_app_process(test_pair.device_config.udid, app_package, clear_data=clear_app_data)
+        time.sleep(3)
+        
         for user_config in test_pair.user_configs:
             print(f"\nTesting with user: {user_config.user_id} ({user_config.country_code})")
             
             driver = get_driver(test_pair.device_config, user_config, appium_port)
             wait = WebDriverWait(driver, int(os.getenv('EXPLICIT_WAIT', '20')))
             
+            # 앱 재시작 (첫 번째 사용자만, 데이터 유지)
+            if user_config == test_pair.user_configs[0]:
+                restart_app(driver, test_pair.device_config.udid, app_package, app_activity, clear_data=clear_app_data)
+            
             try:
                 print("Available contexts:", driver.contexts)
-                driver.switch_to.context(user_config.webview_name)
+                # 디바이스 설정의 webview_name 우선 사용, 없으면 사용자 설정 사용
+                webview_context = (test_pair.device_config.webview_name or 
+                                 user_config.webview_name)
+                driver.switch_to.context(webview_context)
                 
                 for lang in test_pair.languages:
                     print(f"\nTesting language: {lang}")

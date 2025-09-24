@@ -1,0 +1,2170 @@
+{
+  "session_info": {
+    "start_time": "20250924_133953",
+    "app_package": "com.cesco.oversea.srs.viet",
+    "app_activity": "com.mcnc.bizmob.cesco.SlideFragmentActivity",
+    "device_udid": "RFCM902ZM9K",
+    "webview_context": "WEBVIEW_com.cesco.oversea.srs.viet",
+    "end_time": "2025-09-24T13:41:04.424574",
+    "total_elements_found": 30,
+    "total_pages_scanned": 3
+  },
+  "context_switches": [
+    {
+      "timestamp": "2025-09-24T13:40:04.434750",
+      "current_context": "NATIVE_APP",
+      "available_contexts": [
+        "NATIVE_APP",
+        "WEBVIEW_com.cesco.oversea.srs.viet"
+      ],
+      "webview_contexts": [
+        "WEBVIEW_com.cesco.oversea.srs.viet"
+      ],
+      "native_contexts": [
+        "NATIVE_APP"
+      ]
+    },
+    {
+      "timestamp": "2025-09-24T13:40:10.900660",
+      "action": "switch_to_webview",
+      "target_context": "WEBVIEW_com.cesco.oversea.srs.viet",
+      "success": true,
+      "current_context": "WEBVIEW_com.cesco.oversea.srs.viet",
+      "retry_count": 1
+    },
+    {
+      "timestamp": "2025-09-24T13:40:22.132426",
+      "action": "login_attempt",
+      "user_id": "c89109",
+      "success": true,
+      "url_after_login": "http://localhost/HOM1000"
+    }
+  ],
+  "scanned_pages": [
+    {
+      "page_name": "after_login",
+      "timestamp": "2025-09-24T13:40:22.132495",
+      "url": "http://localhost/HOM1000",
+      "title": "홈",
+      "elements": {
+        "inputs": [
+          {
+            "index": 0,
+            "selector_used": "input:not([type])",
+            "element_type": "inputs",
+            "tag_name": "input",
+            "id": null,
+            "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+            "name": null,
+            "type": "text",
+            "value": "2025-09-24",
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 26,
+              "y": 108
+            },
+            "size": {
+              "height": 34,
+              "width": 120
+            },
+            "attributes": {
+              "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+              "type": "text",
+              "value": "2025-09-24"
+            },
+            "page_name": "after_login",
+            "element_type_category": "inputs"
+          },
+          {
+            "index": 0,
+            "selector_used": "input",
+            "element_type": "inputs",
+            "tag_name": "input",
+            "id": null,
+            "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+            "name": null,
+            "type": "text",
+            "value": "2025-09-24",
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 26,
+              "y": 108
+            },
+            "size": {
+              "height": 34,
+              "width": 120
+            },
+            "attributes": {
+              "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+              "type": "text",
+              "value": "2025-09-24"
+            },
+            "page_name": "after_login",
+            "element_type_category": "inputs"
+          },
+          {
+            "index": 1,
+            "selector_used": "input",
+            "element_type": "inputs",
+            "tag_name": "input",
+            "id": null,
+            "class": null,
+            "name": null,
+            "type": "checkbox",
+            "value": "on",
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 0,
+              "width": 0
+            },
+            "attributes": {
+              "type": "checkbox",
+              "value": "on"
+            },
+            "page_name": "after_login",
+            "element_type_category": "inputs"
+          }
+        ],
+        "buttons": [
+          {
+            "index": 0,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_head_menu",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 371,
+              "y": 33
+            },
+            "size": {
+              "height": 50,
+              "width": 24
+            },
+            "attributes": {
+              "class": "btn_head_menu",
+              "type": "button"
+            },
+            "innerHTML": "<span>GNB</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 1,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "dp--clear-btn",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 33,
+              "width": 40
+            },
+            "attributes": {
+              "class": "dp--clear-btn",
+              "type": "button"
+            },
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 2,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_acc w",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": "근무 현황",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 304,
+              "y": 108
+            },
+            "size": {
+              "height": 34,
+              "width": 81
+            },
+            "attributes": {
+              "class": "btn_acc w",
+              "type": "button"
+            },
+            "innerHTML": "<span data-v-67da1672=\"\">근무 현황</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 3,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn04",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": "신규계약 플랜\n0",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 32,
+              "y": 254
+            },
+            "size": {
+              "height": 40,
+              "width": 347
+            },
+            "attributes": {
+              "class": "btn04",
+              "type": "button"
+            },
+            "innerHTML": "<dl data-v-67da1672=\"\" class=\"dlist01\"><dt data-v-67da1672=\"\" data-ko=\"신규계약 플랜\"><span data-v-67da1672=\"\">신규계약 플랜</span></dt><dd data-v-67da1672=\"\"><strong data-v-67da1672=\"\">0</strong></dd></dl>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 4,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_work",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": "업무 시작",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 16,
+              "y": 322
+            },
+            "size": {
+              "height": 48,
+              "width": 379
+            },
+            "attributes": {
+              "class": "btn_work",
+              "type": "button"
+            },
+            "innerHTML": "<span data-v-67da1672=\"\" data-ko=\"업무 시작\">업무 시작</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 5,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_work rest none",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": false,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 0,
+              "width": 0
+            },
+            "attributes": {
+              "class": "btn_work rest none",
+              "type": "button"
+            },
+            "innerHTML": "<span data-v-67da1672=\"\" data-ko=\"휴게 시작\">휴게시작</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 6,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_work rest_end",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 48,
+              "width": 111
+            },
+            "attributes": {
+              "class": "btn_work rest_end",
+              "type": "button"
+            },
+            "innerHTML": "<span data-v-67da1672=\"\" data-ko=\"휴게 종료\">휴게종료</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 7,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn03 shadow",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": "지사 출근",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": false,
+            "location": {
+              "x": 16,
+              "y": 410
+            },
+            "size": {
+              "height": 40,
+              "width": 121
+            },
+            "attributes": {
+              "class": "btn03 shadow",
+              "type": "button"
+            },
+            "innerHTML": "<strong data-v-67da1672=\"\" data-ko=\"지사 출근\">지사 출근</strong>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 8,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn03 shadow",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": "기타 업무",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": false,
+            "location": {
+              "x": 145,
+              "y": 410
+            },
+            "size": {
+              "height": 40,
+              "width": 121
+            },
+            "attributes": {
+              "class": "btn03 shadow",
+              "type": "button"
+            },
+            "innerHTML": "<strong data-v-67da1672=\"\" data-ko=\"기타 업무\">기타 업무</strong>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 9,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn03 shadow",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": "서비스 대기",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": false,
+            "location": {
+              "x": 274,
+              "y": 410
+            },
+            "size": {
+              "height": 40,
+              "width": 121
+            },
+            "attributes": {
+              "class": "btn03 shadow",
+              "type": "button"
+            },
+            "innerHTML": "<strong data-v-67da1672=\"\" data-ko=\"서비스 대기\">서비스 대기</strong>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 10,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn01",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 0,
+              "width": 0
+            },
+            "attributes": {
+              "class": "btn01",
+              "type": "button"
+            },
+            "innerHTML": "<span data-v-67da1672=\"\">일일근무현황 등록</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 11,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_fab_my",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 345,
+              "y": 736
+            },
+            "size": {
+              "height": 50,
+              "width": 50
+            },
+            "attributes": {
+              "class": "btn_fab_my",
+              "type": "button"
+            },
+            "innerHTML": "<span data-v-67da1672=\"\">My menu</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 12,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_toolbar_home on",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 802
+            },
+            "size": {
+              "height": 64,
+              "width": 82
+            },
+            "attributes": {
+              "class": "btn_toolbar_home on",
+              "type": "button"
+            },
+            "innerHTML": "<span>Home</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 13,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_toolbar_search",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 82,
+              "y": 802
+            },
+            "size": {
+              "height": 64,
+              "width": 82
+            },
+            "attributes": {
+              "class": "btn_toolbar_search",
+              "type": "button"
+            },
+            "innerHTML": "<span>Search</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 14,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_toolbar_plan",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 165,
+              "y": 802
+            },
+            "size": {
+              "height": 64,
+              "width": 82
+            },
+            "attributes": {
+              "class": "btn_toolbar_plan",
+              "type": "button"
+            },
+            "innerHTML": "<span>Route Plan</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 15,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_toolbar_service",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 247,
+              "y": 802
+            },
+            "size": {
+              "height": 64,
+              "width": 82
+            },
+            "attributes": {
+              "class": "btn_toolbar_service",
+              "type": "button"
+            },
+            "innerHTML": "<span>Service</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          },
+          {
+            "index": 16,
+            "selector_used": "button",
+            "element_type": "buttons",
+            "tag_name": "button",
+            "id": null,
+            "class": "btn_toolbar_attendance_list",
+            "name": null,
+            "type": "button",
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 329,
+              "y": 802
+            },
+            "size": {
+              "height": 64,
+              "width": 82
+            },
+            "attributes": {
+              "class": "btn_toolbar_attendance_list",
+              "type": "button"
+            },
+            "innerHTML": "<span>Settings</span>",
+            "page_name": "after_login",
+            "element_type_category": "buttons"
+          }
+        ],
+        "links": [],
+        "forms": [],
+        "selects": [],
+        "textareas": [],
+        "images": [
+          {
+            "index": 0,
+            "selector_used": "img",
+            "element_type": "images",
+            "tag_name": "img",
+            "id": null,
+            "class": null,
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": "http://localhost/img/logo_srs.svg",
+            "alt": "CESCO SRS",
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 16,
+              "y": 44
+            },
+            "size": {
+              "height": 28,
+              "width": 81
+            },
+            "attributes": {
+              "src": "http://localhost/img/logo_srs.svg",
+              "alt": "CESCO SRS"
+            },
+            "page_name": "after_login",
+            "element_type_category": "images"
+          },
+          {
+            "index": 0,
+            "selector_used": "[role='img']",
+            "element_type": "images",
+            "tag_name": "svg",
+            "id": null,
+            "class": "dp__input_icon dp__input_icons",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": "img",
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 28,
+              "width": 40
+            },
+            "attributes": {
+              "class": "dp__input_icon dp__input_icons",
+              "role": "img"
+            },
+            "page_name": "after_login",
+            "element_type_category": "images"
+          },
+          {
+            "index": 1,
+            "selector_used": "[role='img']",
+            "element_type": "images",
+            "tag_name": "svg",
+            "id": null,
+            "class": "dp__icon dp__input_icons",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": "img",
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 0,
+              "width": 0
+            },
+            "attributes": {
+              "class": "dp__icon dp__input_icons",
+              "role": "img"
+            },
+            "page_name": "after_login",
+            "element_type_category": "images"
+          }
+        ],
+        "other_elements": [
+          {
+            "index": 0,
+            "selector_used": "div",
+            "element_type": "other",
+            "tag_name": "div",
+            "id": "app",
+            "class": null,
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": "근무 현황\n루트플랜 현황 (0 / 0)\n진행률 0%\n신규계약 플랜\n0\n업무 시작\n지사 출근\n기타 업무\n서비스 대기\n업무 미시작\n예정된 플랜이 없습니다.",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 866,
+              "width": 411
+            },
+            "attributes": {
+              "id": "app"
+            },
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          },
+          {
+            "index": 1,
+            "selector_used": "div",
+            "element_type": "other",
+            "tag_name": "div",
+            "id": null,
+            "class": "loadingWrap",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 866,
+              "width": 411
+            },
+            "attributes": {
+              "class": "loadingWrap"
+            },
+            "innerHTML": "<div class=\"page_loading\">Loading...</div>",
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          },
+          {
+            "index": 2,
+            "selector_used": "div",
+            "element_type": "other",
+            "tag_name": "div",
+            "id": null,
+            "class": "page_loading",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 0,
+              "width": 0
+            },
+            "attributes": {
+              "class": "page_loading"
+            },
+            "innerHTML": "Loading...",
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          },
+          {
+            "index": 3,
+            "selector_used": "div",
+            "element_type": "other",
+            "tag_name": "div",
+            "id": null,
+            "class": "ion-page subWrap bg_w has_toolbar bg_base",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": "근무 현황\n루트플랜 현황 (0 / 0)\n진행률 0%\n신규계약 플랜\n0\n업무 시작\n지사 출근\n기타 업무\n서비스 대기\n업무 미시작\n예정된 플랜이 없습니다.",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "height": 866,
+              "width": 411
+            },
+            "attributes": {
+              "class": "ion-page subWrap bg_w has_toolbar bg_base"
+            },
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          },
+          {
+            "index": 4,
+            "selector_used": "div",
+            "element_type": "other",
+            "tag_name": "div",
+            "id": null,
+            "class": "title_btn",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 371,
+              "y": 33
+            },
+            "size": {
+              "height": 50,
+              "width": 24
+            },
+            "attributes": {
+              "class": "title_btn"
+            },
+            "innerHTML": "<!--v-if--><button type=\"button\" class=\"btn_head_menu\"><span>GNB</span></button>",
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          },
+          {
+            "index": 1,
+            "selector_used": "span",
+            "element_type": "other",
+            "tag_name": "span",
+            "id": null,
+            "class": null,
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": "근무 현황",
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": true,
+            "is_enabled": true,
+            "location": {
+              "x": 304,
+              "y": 116
+            },
+            "size": {
+              "height": 19,
+              "width": 55
+            },
+            "attributes": {},
+            "innerHTML": "근무 현황",
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          },
+          {
+            "index": 3,
+            "selector_used": "span",
+            "element_type": "other",
+            "tag_name": "span",
+            "id": null,
+            "class": "value",
+            "name": null,
+            "type": null,
+            "value": null,
+            "text": null,
+            "placeholder": null,
+            "href": null,
+            "src": null,
+            "alt": null,
+            "title": null,
+            "role": null,
+            "is_displayed": false,
+            "is_enabled": true,
+            "location": {
+              "x": 307,
+              "y": 153
+            },
+            "size": {
+              "height": 21,
+              "width": 58
+            },
+            "attributes": {
+              "class": "value"
+            },
+            "innerHTML": "0시간 0분",
+            "page_name": "after_login",
+            "element_type_category": "other_elements"
+          }
+        ]
+      },
+      "total_elements": 30
+    },
+    {
+      "page_name": "initial_page",
+      "timestamp": "2025-09-24T13:40:59.300138",
+      "url": null,
+      "title": null,
+      "elements": {
+        "inputs": [],
+        "buttons": [],
+        "links": [],
+        "forms": [],
+        "selects": [],
+        "textareas": [],
+        "images": [],
+        "other_elements": []
+      },
+      "total_elements": 0
+    },
+    {
+      "page_name": "after_wait",
+      "timestamp": "2025-09-24T13:41:04.349452",
+      "url": null,
+      "title": null,
+      "elements": {
+        "inputs": [],
+        "buttons": [],
+        "links": [],
+        "forms": [],
+        "selects": [],
+        "textareas": [],
+        "images": [],
+        "other_elements": []
+      },
+      "total_elements": 0
+    }
+  ],
+  "all_elements": [
+    {
+      "index": 0,
+      "selector_used": "input:not([type])",
+      "element_type": "inputs",
+      "tag_name": "input",
+      "id": null,
+      "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+      "name": null,
+      "type": "text",
+      "value": "2025-09-24",
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 26,
+        "y": 108
+      },
+      "size": {
+        "height": 34,
+        "width": 120
+      },
+      "attributes": {
+        "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+        "type": "text",
+        "value": "2025-09-24"
+      },
+      "page_name": "after_login",
+      "element_type_category": "inputs"
+    },
+    {
+      "index": 0,
+      "selector_used": "input",
+      "element_type": "inputs",
+      "tag_name": "input",
+      "id": null,
+      "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+      "name": null,
+      "type": "text",
+      "value": "2025-09-24",
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 26,
+        "y": 108
+      },
+      "size": {
+        "height": 34,
+        "width": 120
+      },
+      "attributes": {
+        "class": "dp__pointer dp__input_readonly dp__input dp__input_icon_pad dp__input_reg",
+        "type": "text",
+        "value": "2025-09-24"
+      },
+      "page_name": "after_login",
+      "element_type_category": "inputs"
+    },
+    {
+      "index": 1,
+      "selector_used": "input",
+      "element_type": "inputs",
+      "tag_name": "input",
+      "id": null,
+      "class": null,
+      "name": null,
+      "type": "checkbox",
+      "value": "on",
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 0,
+        "width": 0
+      },
+      "attributes": {
+        "type": "checkbox",
+        "value": "on"
+      },
+      "page_name": "after_login",
+      "element_type_category": "inputs"
+    },
+    {
+      "index": 0,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_head_menu",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 371,
+        "y": 33
+      },
+      "size": {
+        "height": 50,
+        "width": 24
+      },
+      "attributes": {
+        "class": "btn_head_menu",
+        "type": "button"
+      },
+      "innerHTML": "<span>GNB</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 1,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "dp--clear-btn",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 33,
+        "width": 40
+      },
+      "attributes": {
+        "class": "dp--clear-btn",
+        "type": "button"
+      },
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 2,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_acc w",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": "근무 현황",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 304,
+        "y": 108
+      },
+      "size": {
+        "height": 34,
+        "width": 81
+      },
+      "attributes": {
+        "class": "btn_acc w",
+        "type": "button"
+      },
+      "innerHTML": "<span data-v-67da1672=\"\">근무 현황</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 3,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn04",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": "신규계약 플랜\n0",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 32,
+        "y": 254
+      },
+      "size": {
+        "height": 40,
+        "width": 347
+      },
+      "attributes": {
+        "class": "btn04",
+        "type": "button"
+      },
+      "innerHTML": "<dl data-v-67da1672=\"\" class=\"dlist01\"><dt data-v-67da1672=\"\" data-ko=\"신규계약 플랜\"><span data-v-67da1672=\"\">신규계약 플랜</span></dt><dd data-v-67da1672=\"\"><strong data-v-67da1672=\"\">0</strong></dd></dl>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 4,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_work",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": "업무 시작",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 16,
+        "y": 322
+      },
+      "size": {
+        "height": 48,
+        "width": 379
+      },
+      "attributes": {
+        "class": "btn_work",
+        "type": "button"
+      },
+      "innerHTML": "<span data-v-67da1672=\"\" data-ko=\"업무 시작\">업무 시작</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 5,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_work rest none",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": false,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 0,
+        "width": 0
+      },
+      "attributes": {
+        "class": "btn_work rest none",
+        "type": "button"
+      },
+      "innerHTML": "<span data-v-67da1672=\"\" data-ko=\"휴게 시작\">휴게시작</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 6,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_work rest_end",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 48,
+        "width": 111
+      },
+      "attributes": {
+        "class": "btn_work rest_end",
+        "type": "button"
+      },
+      "innerHTML": "<span data-v-67da1672=\"\" data-ko=\"휴게 종료\">휴게종료</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 7,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn03 shadow",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": "지사 출근",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": false,
+      "location": {
+        "x": 16,
+        "y": 410
+      },
+      "size": {
+        "height": 40,
+        "width": 121
+      },
+      "attributes": {
+        "class": "btn03 shadow",
+        "type": "button"
+      },
+      "innerHTML": "<strong data-v-67da1672=\"\" data-ko=\"지사 출근\">지사 출근</strong>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 8,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn03 shadow",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": "기타 업무",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": false,
+      "location": {
+        "x": 145,
+        "y": 410
+      },
+      "size": {
+        "height": 40,
+        "width": 121
+      },
+      "attributes": {
+        "class": "btn03 shadow",
+        "type": "button"
+      },
+      "innerHTML": "<strong data-v-67da1672=\"\" data-ko=\"기타 업무\">기타 업무</strong>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 9,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn03 shadow",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": "서비스 대기",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": false,
+      "location": {
+        "x": 274,
+        "y": 410
+      },
+      "size": {
+        "height": 40,
+        "width": 121
+      },
+      "attributes": {
+        "class": "btn03 shadow",
+        "type": "button"
+      },
+      "innerHTML": "<strong data-v-67da1672=\"\" data-ko=\"서비스 대기\">서비스 대기</strong>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 10,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn01",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 0,
+        "width": 0
+      },
+      "attributes": {
+        "class": "btn01",
+        "type": "button"
+      },
+      "innerHTML": "<span data-v-67da1672=\"\">일일근무현황 등록</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 11,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_fab_my",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 345,
+        "y": 736
+      },
+      "size": {
+        "height": 50,
+        "width": 50
+      },
+      "attributes": {
+        "class": "btn_fab_my",
+        "type": "button"
+      },
+      "innerHTML": "<span data-v-67da1672=\"\">My menu</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 12,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_toolbar_home on",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 802
+      },
+      "size": {
+        "height": 64,
+        "width": 82
+      },
+      "attributes": {
+        "class": "btn_toolbar_home on",
+        "type": "button"
+      },
+      "innerHTML": "<span>Home</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 13,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_toolbar_search",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 82,
+        "y": 802
+      },
+      "size": {
+        "height": 64,
+        "width": 82
+      },
+      "attributes": {
+        "class": "btn_toolbar_search",
+        "type": "button"
+      },
+      "innerHTML": "<span>Search</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 14,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_toolbar_plan",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 165,
+        "y": 802
+      },
+      "size": {
+        "height": 64,
+        "width": 82
+      },
+      "attributes": {
+        "class": "btn_toolbar_plan",
+        "type": "button"
+      },
+      "innerHTML": "<span>Route Plan</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 15,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_toolbar_service",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 247,
+        "y": 802
+      },
+      "size": {
+        "height": 64,
+        "width": 82
+      },
+      "attributes": {
+        "class": "btn_toolbar_service",
+        "type": "button"
+      },
+      "innerHTML": "<span>Service</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 16,
+      "selector_used": "button",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "id": null,
+      "class": "btn_toolbar_attendance_list",
+      "name": null,
+      "type": "button",
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 329,
+        "y": 802
+      },
+      "size": {
+        "height": 64,
+        "width": 82
+      },
+      "attributes": {
+        "class": "btn_toolbar_attendance_list",
+        "type": "button"
+      },
+      "innerHTML": "<span>Settings</span>",
+      "page_name": "after_login",
+      "element_type_category": "buttons"
+    },
+    {
+      "index": 0,
+      "selector_used": "img",
+      "element_type": "images",
+      "tag_name": "img",
+      "id": null,
+      "class": null,
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": "http://localhost/img/logo_srs.svg",
+      "alt": "CESCO SRS",
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 16,
+        "y": 44
+      },
+      "size": {
+        "height": 28,
+        "width": 81
+      },
+      "attributes": {
+        "src": "http://localhost/img/logo_srs.svg",
+        "alt": "CESCO SRS"
+      },
+      "page_name": "after_login",
+      "element_type_category": "images"
+    },
+    {
+      "index": 0,
+      "selector_used": "[role='img']",
+      "element_type": "images",
+      "tag_name": "svg",
+      "id": null,
+      "class": "dp__input_icon dp__input_icons",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": "img",
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 28,
+        "width": 40
+      },
+      "attributes": {
+        "class": "dp__input_icon dp__input_icons",
+        "role": "img"
+      },
+      "page_name": "after_login",
+      "element_type_category": "images"
+    },
+    {
+      "index": 1,
+      "selector_used": "[role='img']",
+      "element_type": "images",
+      "tag_name": "svg",
+      "id": null,
+      "class": "dp__icon dp__input_icons",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": "img",
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 0,
+        "width": 0
+      },
+      "attributes": {
+        "class": "dp__icon dp__input_icons",
+        "role": "img"
+      },
+      "page_name": "after_login",
+      "element_type_category": "images"
+    },
+    {
+      "index": 0,
+      "selector_used": "div",
+      "element_type": "other",
+      "tag_name": "div",
+      "id": "app",
+      "class": null,
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": "근무 현황\n루트플랜 현황 (0 / 0)\n진행률 0%\n신규계약 플랜\n0\n업무 시작\n지사 출근\n기타 업무\n서비스 대기\n업무 미시작\n예정된 플랜이 없습니다.",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 866,
+        "width": 411
+      },
+      "attributes": {
+        "id": "app"
+      },
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    },
+    {
+      "index": 1,
+      "selector_used": "div",
+      "element_type": "other",
+      "tag_name": "div",
+      "id": null,
+      "class": "loadingWrap",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 866,
+        "width": 411
+      },
+      "attributes": {
+        "class": "loadingWrap"
+      },
+      "innerHTML": "<div class=\"page_loading\">Loading...</div>",
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    },
+    {
+      "index": 2,
+      "selector_used": "div",
+      "element_type": "other",
+      "tag_name": "div",
+      "id": null,
+      "class": "page_loading",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 0,
+        "width": 0
+      },
+      "attributes": {
+        "class": "page_loading"
+      },
+      "innerHTML": "Loading...",
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    },
+    {
+      "index": 3,
+      "selector_used": "div",
+      "element_type": "other",
+      "tag_name": "div",
+      "id": null,
+      "class": "ion-page subWrap bg_w has_toolbar bg_base",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": "근무 현황\n루트플랜 현황 (0 / 0)\n진행률 0%\n신규계약 플랜\n0\n업무 시작\n지사 출근\n기타 업무\n서비스 대기\n업무 미시작\n예정된 플랜이 없습니다.",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 866,
+        "width": 411
+      },
+      "attributes": {
+        "class": "ion-page subWrap bg_w has_toolbar bg_base"
+      },
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    },
+    {
+      "index": 4,
+      "selector_used": "div",
+      "element_type": "other",
+      "tag_name": "div",
+      "id": null,
+      "class": "title_btn",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 371,
+        "y": 33
+      },
+      "size": {
+        "height": 50,
+        "width": 24
+      },
+      "attributes": {
+        "class": "title_btn"
+      },
+      "innerHTML": "<!--v-if--><button type=\"button\" class=\"btn_head_menu\"><span>GNB</span></button>",
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    },
+    {
+      "index": 1,
+      "selector_used": "span",
+      "element_type": "other",
+      "tag_name": "span",
+      "id": null,
+      "class": null,
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": "근무 현황",
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": true,
+      "is_enabled": true,
+      "location": {
+        "x": 304,
+        "y": 116
+      },
+      "size": {
+        "height": 19,
+        "width": 55
+      },
+      "attributes": {},
+      "innerHTML": "근무 현황",
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    },
+    {
+      "index": 3,
+      "selector_used": "span",
+      "element_type": "other",
+      "tag_name": "span",
+      "id": null,
+      "class": "value",
+      "name": null,
+      "type": null,
+      "value": null,
+      "text": null,
+      "placeholder": null,
+      "href": null,
+      "src": null,
+      "alt": null,
+      "title": null,
+      "role": null,
+      "is_displayed": false,
+      "is_enabled": true,
+      "location": {
+        "x": 307,
+        "y": 153
+      },
+      "size": {
+        "height": 21,
+        "width": 58
+      },
+      "attributes": {
+        "class": "value"
+      },
+      "innerHTML": "0시간 0분",
+      "page_name": "after_login",
+      "element_type_category": "other_elements"
+    }
+  ]
+}

@@ -26,12 +26,12 @@ TEST_CASES_FILE = os.getenv('TEST_CASES_CSV', 'test_cases.csv')
 # App settings from environment
 BASE_URL = os.getenv('BASE_URL', 'http://localhost/')
 LOGIN_PATH = os.getenv('LOGIN_PATH', 'LOG1000')
-LANGUAGES = os.getenv('CN_LANGUAGES', 'zh,ko,en').split(',')
+LANGUAGES = os.getenv('VI_LANGUAGES', 'vi,ko,en').split(',')
 SLEEP_TIME = int(os.getenv('SLEEP_TIME', '3'))
-WEBVIEW_NAME = os.getenv('CN_WEBVIEW_NAME', 'WEBVIEW_com.cesco.oversea.srs.cn')
-APP_PACKAGE = os.getenv('CN_APP_PACKAGE', 'com.cesco.oversea.srs.cn')
+WEBVIEW_NAME = os.getenv('VI_WEBVIEW_NAME', 'WEBVIEW_com.cesco.oversea.srs.viet')
+APP_PACKAGE = os.getenv('VI_APP_PACKAGE', 'com.cesco.oversea.srs.viet')
 APP_ACTIVITY = os.getenv('DEFAULT_APP_ACTIVITY', 'com.mcnc.bizmob.cesco.SlideFragmentActivity')
-UDID = os.getenv('DEFAULT_UDID', 'RFCX715QHAL')
+UDID = os.getenv('DEFAULT_UDID', 'RFCM902ZM9K')
 
 class EnhancedTestCase:
     """향상된 테스트 케이스 클래스"""
@@ -66,7 +66,25 @@ def get_driver():
         appPackage=APP_PACKAGE,
         appActivity=APP_ACTIVITY,
         noReset=True,
-        fullReset=False
+        fullReset=False,
+        # WEBVIEW 관련 설정 (강화된 Chromedriver 지원)
+        chromedriverAutodownload=True,
+        chromedriverExecutable='/Users/loveauden/.appium/chromedriver/chromedriver-mac-arm64/chromedriver',  # 직접 경로 지정
+        chromedriverChromeMappingFile=None,  # 자동 매핑 사용
+        skipLogCapture=True,  # 로그 캡처 건너뛰기
+        autoWebview=False,  # 수동 웹뷰 전환
+        recreateChromeDriverSessions=True,  # 세션 재생성
+        chromeOptions={
+            'w3c': False,
+            'args': [
+                '--disable-dev-shm-usage', 
+                '--no-sandbox',
+                '--disable-web-security',
+                '--disable-features=VizDisplayCompositor',
+                '--disable-extensions',
+                '--disable-plugins'
+            ]
+        }
     )
     options = UiAutomator2Options().load_capabilities(capabilities)
     appium_host = os.getenv('APPIUM_HOST', 'localhost')
@@ -358,8 +376,8 @@ class TestEnhancedScenarios(unittest.TestCase):
                 (AppiumBy.XPATH, "//button[contains(.,'select language')]")))
             lang_btn.click()
             
-            # 언어 인덱스 매핑 (중국 앱 기준)
-            index = {'zh': 1, 'ko': 2, 'en': 3}.get(lang, 1)
+            # 언어 인덱스 매핑 (베트남 앱 기준)
+            index = {'vi': 1, 'ko': 2, 'en': 3}.get(lang, 1)
             selector = f"(//input[@name='select'])[{index}]"
             lang_input = wait.until(EC.element_to_be_clickable((AppiumBy.XPATH, selector)))
             lang_input.click()

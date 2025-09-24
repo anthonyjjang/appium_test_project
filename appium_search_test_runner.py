@@ -21,7 +21,7 @@ os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 TEST_DEFINITION_FILE = 'test_cases_search.json'
 RESULT_CSV_FILE = 'test_results.csv'
 #BASE_URL = "../"  # 접속할 기본 URL
-#BASE_URL = "http://localhost/"  # 접속할 기본 URL
+BASE_URL = "http://localhost/"  # 접속할 기본 URL
 BASE_URL = "http://10.200.11.143:8080/"  # 접속할 기본 URL
 LOGIN_PATH = 'LOG1000'
 LANGUAGES = ['vi','ko','en']  # 지원 언어 목록
@@ -32,11 +32,29 @@ def get_driver():
     capabilities = dict(
         platformName='Android',
         automationName='uiautomator2',
-        udid='R3CW509J2RE',
-        appPackage='com.cesco.oversea.srs.dev',
+        udid='RFCM902ZM9K',
+        appPackage='com.cesco.oversea.srs.viet',
         appActivity='com.mcnc.bizmob.cesco.SlideFragmentActivity',
         noReset=True,
-        fullReset=False
+        fullReset=False,
+        # WEBVIEW 관련 설정 (강화된 Chromedriver 지원)
+        chromedriverAutodownload=True,
+        chromedriverExecutable='/Users/loveauden/.appium/chromedriver/chromedriver-mac-arm64/chromedriver',  # 직접 경로 지정
+        chromedriverChromeMappingFile=None,  # 자동 매핑 사용
+        skipLogCapture=True,  # 로그 캡처 건너뛰기
+        autoWebview=False,  # 수동 웹뷰 전환
+        recreateChromeDriverSessions=True,  # 세션 재생성
+        chromeOptions={
+            'w3c': False,
+            'args': [
+                '--disable-dev-shm-usage', 
+                '--no-sandbox',
+                '--disable-web-security',
+                '--disable-features=VizDisplayCompositor',
+                '--disable-extensions',
+                '--disable-plugins'
+            ]
+        }
     )
     options = UiAutomator2Options().load_capabilities(capabilities)
     driver = webdriver.Remote('http://localhost:4723', options=options)
@@ -88,11 +106,11 @@ def login(driver, wait):
     try:
         user_id = wait.until(EC.presence_of_element_located((AppiumBy.CSS_SELECTOR, ".log_id input")))
         user_id.clear()
-        user_id.send_keys("c20700")
+        user_id.send_keys("c89109")
 
         user_pw = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, "//input[@type='password']")))
         user_pw.clear()
-        user_pw.send_keys("20700")
+        user_pw.send_keys("mcnc1234!!")
 
         for attempt in range(3):
             try:
@@ -255,7 +273,7 @@ class TestAllLanguages(unittest.TestCase):
         wait = WebDriverWait(driver, 20)
         #for context in contexts:
             #    print("INIT Available context: " + context)
-        driver.switch_to.context('WEBVIEW_com.cesco.oversea.srs.dev')
+        driver.switch_to.context('WEBVIEW_com.cesco.oversea.srs.viet')
         for lang in LANGUAGES:
             #화면 로딩 후후
             change_language(driver, wait, lang)

@@ -1,0 +1,57 @@
+{
+  "VN": {
+    "country_name": "Vietnam",
+    "primary_language": "vi",
+    "supported_languages": ["vi", "ko", "en"],
+    "app_package": "com.cesco.oversea.srs.viet",
+    "webview_name": "WEBVIEW_com.cesco.oversea.srs.viet",
+    "currency": "VND",
+    "date_format": "DD/MM/YYYY",
+    "phone_format": "+84-XXX-XXX-XXX",
+    "timezone": "Asia/Ho_Chi_Minh"
+  },
+  "CN": {
+    "country_name": "China",
+    "primary_language": "zh",
+    "supported_languages": ["zh", "ko", "en"],
+    "app_package": "com.cesco.oversea.srs.cn",
+    "webview_name": "WEBVIEW_com.cesco.oversea.srs.cn",
+    "currency": "CNY",
+    "date_format": "YYYY-MM-DD",
+    "phone_format": "+86-XXX-XXXX-XXXX",
+    "timezone": "Asia/Shanghai"
+  },
+  "KR": {
+    "country_name": "Korea",
+    "primary_language": "ko",
+    "supported_languages": ["ko", "en"],
+    "app_package": "com.cesco.oversea.srs.dev",
+    "webview_name": "WEBVIEW_com.cesco.oversea.srs.dev",
+    "currency": "KRW",
+    "date_format": "YYYY-MM-DD",
+    "phone_format": "+82-XX-XXXX-XXXX",
+    "timezone": "Asia/Seoul"
+  },
+  "TH": {
+    "country_name": "Thailand",
+    "primary_language": "th",
+    "supported_languages": ["th", "ko", "en"],
+    "app_package": "com.cesco.oversea.srs.thai",
+    "webview_name": "WEBVIEW_com.cesco.oversea.srs.thai",
+    "currency": "THB",
+    "date_format": "DD/MM/YYYY",
+    "phone_format": "+66-XX-XXX-XXXX",
+    "timezone": "Asia/Bangkok"
+  },
+  "ID": {
+    "country_name": "Indonesia",
+    "primary_language": "id",
+    "supported_languages": ["id", "ko", "en"],
+    "app_package": "com.cesco.oversea.srs.indo",
+    "webview_name": "WEBVIEW_com.cesco.oversea.srs.indo",
+    "currency": "IDR",
+    "date_format": "DD/MM/YYYY",
+    "phone_format": "+62-XXX-XXX-XXXX",
+    "timezone": "Asia/Jakarta"
+  }
+}

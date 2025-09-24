@@ -1,3 +1,2 @@
 device_id,udid,platform_name,platform_version,app_package,app_activity,webview_name
-DEVICE_R3CW509J,R3CW509J2RE,Android,14,com.cesco.oversea.srs.viet,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.viet
-DEVICE_RFCX715Q,RFCX715QHAL,Android,14,com.cesco.oversea.srs.viet,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.viet
+SM-A908N,RFCM902ZM9K,Android,12,com.cesco.oversea.srs.viet,com.mcnc.bizmob.cesco.SlideFragmentActivity,WEBVIEW_com.cesco.oversea.srs.viet
